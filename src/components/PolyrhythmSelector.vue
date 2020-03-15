@@ -1,0 +1,117 @@
+<template>
+	<v-card outlined>
+		<v-container class="d-flex justify-space-between align-center">
+			<v-container>switch</v-container>
+
+			<v-container class="d-flex justify-center align-center">
+				<v-card outlined class="px-4 py-2 mx-2">
+					<v-menu>
+						<template
+							v-slot:activator="{
+								on
+							}"
+						>
+							<v-container v-on="on">
+								{{
+									$store
+										.state
+										.metronome[0]
+										.numBeats
+								}}
+							</v-container>
+						</template>
+						<v-list>
+							<v-list-item
+								v-for="(item,
+								index) in metrum"
+								:key="index"
+								@click="
+									setBeat(
+										0,
+										item
+									)
+								"
+							>
+								{{ item }}
+							</v-list-item>
+						</v-list>
+					</v-menu>
+				</v-card>
+				:
+				<v-card outlined class="px-4 py-2 mx-2">
+					<v-menu>
+						<template
+							v-slot:activator="{
+								on
+							}"
+						>
+							<v-container v-on="on">
+								{{
+									$store
+										.state
+										.metronome[1]
+										.numBeats
+								}}
+							</v-container>
+						</template>
+						<v-list>
+							<v-list-item
+								v-for="(item,
+								index) in metrum"
+								:key="index"
+								@click="
+									setBeat(
+										1,
+										item
+									)
+								"
+							>
+								{{ item }}
+							</v-list-item>
+						</v-list>
+					</v-menu>
+				</v-card>
+			</v-container>
+		</v-container>
+	</v-card>
+</template>
+<script>
+export default {
+	name: "polyryhthm-selector",
+	computed: {
+		metrum: function() {
+			let a = [];
+			for (let i = 1; i < 10; i++) {
+				a.push(i);
+			}
+			return a;
+		}
+	},
+	methods: {
+		setBeat(metronomeIndex, beat) {
+			this.$set(
+				this.$store.state.metronome[metronomeIndex],
+				"numBeats",
+				beat
+			);
+
+			this.$set(
+				this.$store.state.metronome[metronomeIndex],
+				"accents",
+				[]
+			);
+			for (let i = 0; i < beat; i++) {
+				let accent = 1;
+
+				if (i == 0) {
+					accent = 2;
+				}
+				this.$store.state.metronome[
+					metronomeIndex
+				].accents.push(accent);
+			}
+		}
+	}
+};
+</script>
+<style scoped></style>

@@ -7,6 +7,7 @@
 		/>
 		<tempo-HUD />
 		<play-stop-button @click="toggleMetronome" />
+		<polyrhythm-selector />
 	</v-container>
 </template>
 <script>
@@ -14,13 +15,15 @@ import BeatContainer from "@/components/BeatContainer.vue";
 import TempoHUD from "@/components/TempoHUD.vue";
 import PlayStopButton from "@/components/PlayStopButton.vue";
 import * as Tone from "tone";
+import PolyrhythmSelector from "@/components/PolyrhythmSelector.vue";
 
 export default {
 	name: "main-ui",
 	components: {
 		BeatContainer,
 		TempoHUD,
-		PlayStopButton
+		PlayStopButton,
+		PolyrhythmSelector
 	},
 	data: () => ({
 		tempo: null,
