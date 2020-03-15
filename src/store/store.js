@@ -18,6 +18,7 @@ export const store = new Vuex.Store({
 			}
 		],
 		tempo: 120,
-		isPlaying: false 
+		isPlaying: false,
+			polymode: false
 	}
 });

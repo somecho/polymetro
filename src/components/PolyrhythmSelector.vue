@@ -1,17 +1,21 @@
 <template>
 	<v-card outlined>
 		<v-container class="d-flex justify-space-between align-center">
-			<v-container>switch</v-container>
+			<v-card class="d-flex flex-column align-center pa-3 " outlined>
+					<v-container class="pa-0 overline">polymode</v-container>
+					<v-switch v-model="$store.state.polymode" ></v-switch >
+			</v-card>
 
 			<v-container class="d-flex justify-center align-center">
 				<v-card outlined class="px-4 py-2 mx-2">
-					<v-menu>
+					<v-menu 
+							>
 						<template
 							v-slot:activator="{
 								on
 							}"
 						>
-							<v-container v-on="on">
+							<v-container v-on="on" class="pa-1">
 								{{
 									$store
 										.state
@@ -39,13 +43,13 @@
 				</v-card>
 				:
 				<v-card outlined class="px-4 py-2 mx-2">
-					<v-menu>
+					<v-menu :disabled="!$store.state.polymode">
 						<template
 							v-slot:activator="{
 								on
 							}"
 						>
-							<v-container v-on="on">
+							<v-container v-on="on" class="pa-1">
 								{{
 									$store
 										.state
@@ -78,6 +82,9 @@
 <script>
 export default {
 	name: "polyryhthm-selector",
+		data: ()=>({
+				polymode: false,
+		}),
 	computed: {
 		metrum: function() {
 			let a = [];

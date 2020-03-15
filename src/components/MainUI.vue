@@ -94,7 +94,9 @@ export default {
 			this.clickA.triggerAttackRelease(note, "16n");
 		},
 		soundClickB(note) {
-			this.clickB.triggerAttackRelease(note, "16n");
+			if (this.$store.state.polymode) {
+				this.clickB.triggerAttackRelease(note, "16n");
+			}
 		},
 		loopClickA() {
 			var numBeatsA = this.$store.state.metronome[0].numBeats;
@@ -110,7 +112,7 @@ export default {
 				}
 				this.timeoutGroupA[i] = setTimeout(() => {
 					this.soundClickA(pitch);
-				}, i * this.clickADuration+155);
+				}, i * this.clickADuration + 155);
 			}
 			this.timeoutA = setTimeout(
 				this.loopClickA,
@@ -131,7 +133,7 @@ export default {
 				}
 				this.timeoutGroupB[i] = setTimeout(() => {
 					this.soundClickB(pitch);
-				}, i * this.clickBDuration+150);
+				}, i * this.clickBDuration + 150);
 			}
 			this.timeoutB = setTimeout(
 				this.loopClickB,
