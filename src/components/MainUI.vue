@@ -113,7 +113,7 @@ export default {
 				}
 				this.timeoutGroupA[i] = setTimeout(() => {
 					this.soundClickA(pitch);
-				}, i * this.clickADuration + 150);
+				}, i * this.clickADuration + 140);
 			}
 			this.timeoutA = setTimeout(
 				this.loopClickA,
