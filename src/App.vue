@@ -2,7 +2,7 @@
 	<v-app>
 		<div class="mobile-notice">{{ mobileNotice }}</div>
 		<v-container id="app" class="app root-container">
-			<v-card>
+			<v-card class="mb-1">
 				<router-view />
 			</v-card>
 			<v-tabs hide-slider>

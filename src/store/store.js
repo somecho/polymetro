@@ -9,12 +9,12 @@ export const store = new Vuex.Store({
 			{
 				id: "1",
 				numBeats: 4,
-				accents: [2, 1, 1, 1]
+				accents: [2, 1, 0, 1]
 			},
 			{
 				id: "2",
 				numBeats: 3,
-				accents: [2, 1, 1, 1]
+				accents: [2, 1, 1]
 			}
 		]
 	}
