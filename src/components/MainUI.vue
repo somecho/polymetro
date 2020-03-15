@@ -126,7 +126,7 @@ export default {
 			for (let i = 0; i < numBeatsB; i++) {
 				let pitch;
 				if (accentsB[i] == 0) {
-					pitch = "";
+						continue;
 				} else if (accentsB[i] == 1) {
 					pitch = "C6";
 				} else {
