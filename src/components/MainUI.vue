@@ -61,6 +61,7 @@ export default {
 	},
 
 	mounted() {
+			Tone.context.latencyHint = "interactive"
 		this.tempo = this.$store.state.tempo;
 		this.clickA = new Tone.Synth(this.synthParams).toMaster();
 		this.clickB = new Tone.Synth(this.synthParams).toMaster();
@@ -112,7 +113,7 @@ export default {
 				}
 				this.timeoutGroupA[i] = setTimeout(() => {
 					this.soundClickA(pitch);
-				}, i * this.clickADuration + 155);
+				}, i * this.clickADuration + 150);
 			}
 			this.timeoutA = setTimeout(
 				this.loopClickA,
