@@ -1,11 +1,15 @@
 <template>
-	<div>
+	<v-container class="about">
 		this is the about page
-	</div>
+	</v-container>
 </template>
 <script>
 export default {
 	name: "about-app"
 };
 </script>
-<style scoped></style>
+<style scoped>
+.about {
+		min-height: 85vh;
+}
+</style>

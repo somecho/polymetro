@@ -1,9 +1,9 @@
 <template>
 	<v-card outlined class="d-flex justify-space-around align-center">
 		<v-btn
-			rounded
+				fab
+				small
 			class="elevation-1"
-			color="cyan lighten-5"
 			@touchstart="toggleCount(-1)"
 			@touchend="toggleCount(-1)"
 		>
@@ -13,8 +13,7 @@
 			{{ $store.state.tempo }}
 		</v-card>
 		<v-btn
-			color="cyan lighten-5"
-			rounded
+				fab small
 			class="elevation-1"
 			@touchstart="toggleCount(1)"
 			@touchend="toggleCount(1)"

@@ -6,7 +6,7 @@
 					<v-switch v-model="$store.state.polymode" ></v-switch >
 			</v-card>
 
-			<v-container class="d-flex justify-center align-center">
+					<v-container class="d-flex justify-end align-center headline">
 				<v-card outlined class="px-4 py-2 mx-2">
 					<v-menu 
 							>

@@ -3,7 +3,8 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			x-large
+			width="100"
+			height="100"
 			@click="
 				togglePlay();
 				handleClick();
@@ -12,6 +13,7 @@
 			<v-icon
 				class="display-3"
 				v-if="!$store.state.isPlaying"
+				
 			>
 				mdi-play</v-icon
 			>

@@ -1,5 +1,5 @@
 <template>
-	<v-card outlined>
+	<v-card outlined class="mb-3">
 		<v-container class="d-flex justify-space-between">
 			<beat-element
 				v-for="(beat, beatIndex) in metronomeObject.accents"
