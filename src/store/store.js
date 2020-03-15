@@ -17,7 +17,7 @@ export const store = new Vuex.Store({
 				accents: [2, 1, 1]
 			}
 		],
-		tempo: 110,
+		tempo: 120,
 		isPlaying: false 
 	}
 });

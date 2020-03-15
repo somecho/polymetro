@@ -1,6 +1,14 @@
 <template>
 	<v-container class="d-flex justify-center">
-		<v-btn fab class="elevation-1" x-large @click="togglePlay();handleClick()">
+		<v-btn
+			fab
+			class="elevation-1"
+			x-large
+			@click="
+				togglePlay();
+				handleClick();
+			"
+		>
 			<v-icon
 				class="display-3"
 				v-if="!$store.state.isPlaying"
@@ -24,9 +32,9 @@ export default {
 				!this.$store.state.isPlaying
 			);
 		},
-			handleClick(){
-					this.$emit('click')
-			}
+		handleClick() {
+			this.$emit("click");
+		}
 	}
 };
 </script>

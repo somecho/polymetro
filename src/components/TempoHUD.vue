@@ -1,6 +1,12 @@
 <template>
 	<v-card outlined class="d-flex justify-space-around align-center">
-		<v-btn rounded class="elevation-1" color="cyan lighten-5">
+		<v-btn
+			rounded
+			class="elevation-1"
+			color="cyan lighten-5"
+			@touchstart="toggleCount(-1)"
+			@touchend="toggleCount(-1)"
+		>
 			<v-icon>mdi-minus</v-icon>
 		</v-btn>
 		<v-card class="px-4 py-2 my-2" outlined>
@@ -10,7 +16,8 @@
 			color="cyan lighten-5"
 			rounded
 			class="elevation-1"
-			@click="incTempo"
+			@touchstart="toggleCount(1)"
+			@touchend="toggleCount(1)"
 			><v-icon>mdi-plus</v-icon>
 		</v-btn>
 	</v-card>
@@ -18,11 +25,25 @@
 <script>
 export default {
 	name: "tempo-HUD",
-		methods: {
-				incTempo(){
-						this.$set(this.$store.state, 'tempo', this.$store.state.tempo+1)
-				}
+	data: () => ({
+		countOn: false,
+		inc: 0
+	}),
+	methods: {
+		toggleCount(inc) {
+			this.countOn = !this.countOn;
+			this.countOn ? (this.inc = inc) : (this.inc = 0);
+				console.log (this.inc)
+		},
+		updateTempo() {
+			var newTempo = this.$store.state.tempo + this.inc;
+			this.$set(this.$store.state, "tempo", newTempo);
+			setTimeout(this.updateTempo, 50);
 		}
+	},
+	created() {
+		this.updateTempo();
+	}
 };
 </script>
 <style scoped></style>
