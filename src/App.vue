@@ -1,8 +1,21 @@
 <template>
 	<v-app>
 		<div class="mobile-notice">{{ mobileNotice }}</div>
-		<div id="app" class="app">
+		<div id="app" class="app root-container">
+			<router-view />
 			app
+			<v-tabs hide-slider=true>
+				<v-tab>
+					<router-link to="/">
+						polymetro
+					</router-link>
+				</v-tab>
+				<v-tab>
+					<router-link to="/about">
+						about
+					</router-link>
+				</v-tab>
+			</v-tabs>
 		</div>
 	</v-app>
 </template>
