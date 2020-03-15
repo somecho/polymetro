@@ -105,7 +105,7 @@ export default {
 			for (let i = 0; i < numBeatsA; i++) {
 				let pitch;
 				if (accentsA[i] == 0) {
-					pitch = "";
+						break;
 				} else if (accentsA[i] == 1) {
 					pitch = "A5";
 				} else {
