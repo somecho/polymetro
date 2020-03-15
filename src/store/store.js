@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
 			{
 				id: "1",
 				numBeats: 4,
-				accents: [2, 1, 0, 1]
+				accents: [2, 1, 1, 1]
 			},
 			{
 				id: "2",
@@ -17,7 +17,7 @@ export const store = new Vuex.Store({
 				accents: [2, 1, 1]
 			}
 		],
-		tempo: 70,
+		tempo: 110,
 		isPlaying: false 
 	}
 });
