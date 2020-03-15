@@ -27,12 +27,12 @@ export default {
 };
 </script>
 <style>
-@media (max-width: 600px) {
+@media (max-width: 850px) {
 	.mobile-notice {
 		display: none;
 	}
 }
-@media (min-width: 600px) {
+@media (min-width: 850px) {
 	.app {
 		display: none;
 	}
