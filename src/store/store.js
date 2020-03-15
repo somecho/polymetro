@@ -14,7 +14,7 @@ export const store = new Vuex.Store({
 			{
 				id: "2",
 				numBeats: 3,
-				accents: [2, 1, 1]
+				accents: [0, 0, 0]
 			}
 		],
 		tempo: 120,
