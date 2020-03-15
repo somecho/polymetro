@@ -1,22 +1,19 @@
 <template>
 	<v-app>
 		<div class="mobile-notice">{{ mobileNotice }}</div>
-		<div id="app" class="app root-container">
-			<router-view />
-			app
-			<v-tabs hide-slider=true>
-				<v-tab>
-					<router-link to="/">
-						polymetro
-					</router-link>
-				</v-tab>
-				<v-tab>
-					<router-link to="/about">
-						about
-					</router-link>
-				</v-tab>
+		<v-container id="app" class="app root-container">
+			<v-card>
+				<router-view />
+			</v-card>
+			<v-tabs hide-slider>
+				<router-link to="/">
+					<v-tab>polymetro</v-tab>
+				</router-link>
+				<router-link to="/about">
+					<v-tab>about</v-tab>
+				</router-link>
 			</v-tabs>
-		</div>
+		</v-container>
 	</v-app>
 </template>
 
