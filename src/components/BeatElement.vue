@@ -52,7 +52,7 @@ export default {
 			var newAccent = (this.accent + 1) % 3;
 			if (
 				this.$store.state.polymode &&
-				this.metronomeIndex == 1
+				this.metronomeIndex == 1 || this.metronomeIndex == 0
 			) {
 				this.$set(
 					this.$store.state.metronome[
