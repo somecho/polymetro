@@ -1,5 +1,5 @@
 <template>
-	<v-card outlined>
+	<v-card outlined class="cyan lighten-5">
 		<v-container class="d-flex justify-space-between align-center">
 			<v-card class="d-flex flex-column align-center pa-2 pb-0" outlined>
 					<v-container class=" text-center pa-0 ma-0 overline">second metronome</v-container>

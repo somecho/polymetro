@@ -1,15 +1,16 @@
 <template>
 	<v-app>
 		<div class="mobile-notice">{{ mobileNotice }}</div>
-		<v-container id="app"  class="cyan accent-4 app root-container">
-			<v-card class="mb-1">
+		<v-container id="app"  class="pa-2 cyan accent-4 app root-container">
+			<v-card outlined class="ma-0 mb-1 elevation-4">
 				<router-view />
 			</v-card>
-			<v-tabs hide-slider class="bottom" background-color="cyan accent-4 " >
-						<v-tab class="px-0" :ripple="false" ><router-link class="white--text" to="/">polymetro</router-link></v-tab>
-					<v-tab class="px-0" :ripple="false"><router-link class="white--text" to="/about">about</router-link></v-tab>
-			</v-tabs>
-		</v-container>
+			
+			<v-bottom-navigation  fixed class="px-0 cyan accent-4 elevation-0 d-flex justify-space-between" height="35">
+					<router-link to="/"><v-btn class="px-2">POLYMETRO</v-btn></router-link>
+					<router-link to="about"><v-btn class="mx-0 px-0"><v-icon>mdi-information</v-icon></v-btn></router-link>
+			</v-bottom-navigation>
+	</v-container>
 	</v-app>
 </template>
 
@@ -38,7 +39,6 @@ export default {
 	a {
 			text-decoration: none;
 			color: inherit;
-			padding: 0 10px;
 	}
 }
 @media (min-width: 850px) {

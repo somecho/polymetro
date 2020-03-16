@@ -1,19 +1,18 @@
 <template>
-	<v-card outlined class="d-flex justify-space-around align-center">
+	<v-card outlined class="mt-4 py-2 d-flex justify-space-around align-center">
 		<v-btn
 				fab
-				small
 			class="elevation-1"
 			@touchstart="toggleCount(-1)"
 			@touchend="toggleCount(-1)"
 		>
 			<v-icon>mdi-minus</v-icon>
 		</v-btn>
-		<v-card class="px-4 py-2 my-2" outlined>
+		<v-card class="px-4 py-2 my-2 headline" outlined>
 			{{ $store.state.tempo }}
 		</v-card>
 		<v-btn
-				fab small
+				fab 
 			class="elevation-1"
 			@touchstart="toggleCount(1)"
 			@touchend="toggleCount(1)"

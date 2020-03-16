@@ -1,16 +1,16 @@
 <template>
-	<div @touchend="cycleAccent">
+	<div @touchend="cycleAccent" class="pa-0 ma-0">
 		<v-icon
 			color=" accent-4"
 			v-if="accent == 2"
-			class="display-1 cyan--text"
+			class=" display-1 cyan--text "
 			:class="disabledClass"
 			>mdi-circle</v-icon
 		>
 		<v-icon
 			color="accent-3"
 			v-if="accent == 1"
-			class="cyan--text  display-1"
+			class="ma-0 cyan--text  display-1"
 			:class="disabledClass"
 			>mdi-circle-half-full</v-icon
 		>
@@ -66,4 +66,5 @@ export default {
 	}
 };
 </script>
-<style scoped></style>
+<style scoped>
+</style>
