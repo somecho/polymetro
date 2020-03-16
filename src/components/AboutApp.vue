@@ -6,6 +6,7 @@
 			polyrhythms. Turn on the second metronome to practice
 			polyrhythms!
 		</p>
+		<p>Tap on the circles to toggle accents. To change the rhythm, tap the numbers to select the rhythm you want.</p>
 		<v-divider class="my-4"></v-divider>
 		<h2>Install</h2>
 		<p>This webapp can be installed as an app on your phone.</p>
