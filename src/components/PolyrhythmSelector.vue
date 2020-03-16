@@ -42,7 +42,7 @@
 					</v-menu>
 				</v-card>
 				:
-				<v-card outlined class="px-4 py-2 mx-2">
+				<v-card outlined class=" px-4 py-2 mx-2" :class="disabledClass">
 					<v-menu :disabled="!$store.state.polymode">
 						<template
 							v-slot:activator="{
@@ -92,7 +92,13 @@ export default {
 				a.push(i);
 			}
 			return a;
-		}
+		},
+			disabledClass: function(){
+					return {
+							"grey": !this.$store.state.polymode,
+							"lighten-2": !this.$store.state.polymode
+					}
+			}
 	},
 	methods: {
 		setBeat(metronomeIndex, beat) {
