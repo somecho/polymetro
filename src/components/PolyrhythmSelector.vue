@@ -1,21 +1,34 @@
 <template>
 	<v-card outlined class="cyan lighten-5">
 		<v-container class="d-flex justify-space-between align-center">
-			<v-card class="d-flex flex-column align-center pa-2 pb-0" outlined>
-					<v-container class=" text-center pa-0 ma-0 overline">second metronome</v-container>
-					<v-switch v-model="$store.state.polymode" class="ma-0"></v-switch >
+			<v-card
+				class="d-flex flex-column align-center pa-2 pb-0"
+				outlined
+			>
+				<v-container
+					class=" text-center pa-0 ma-0 overline"
+					>second metronome</v-container
+				>
+				<v-switch
+					v-model="$store.state.polymode"
+					class="ma-0"
+				></v-switch>
 			</v-card>
 
-					<v-container class="d-flex justify-end align-center headline">
-				<v-card outlined class="px-4 py-2 mx-2">
-					<v-menu 
-							>
+			<v-container
+				class="d-flex justify-end align-center headline"
+			>
+				<v-card outlined class="px-4 py-2 mx-2" :class="disabledWhilePlaying">
+					<v-menu :disabled="$store.state.isPlaying">
 						<template
 							v-slot:activator="{
 								on
 							}"
 						>
-							<v-container v-on="on" class="pa-1">
+							<v-container
+								v-on="on"
+								class="pa-1"
+							>
 								{{
 									$store
 										.state
@@ -42,14 +55,28 @@
 					</v-menu>
 				</v-card>
 				:
-				<v-card outlined class=" px-4 py-2 mx-2" :class="disabledClass">
-					<v-menu :disabled="!$store.state.polymode">
+				<v-card
+					outlined
+					class=" px-4 py-2 mx-2"
+					:class="disabledClass"
+				>
+					<v-menu
+						:disabled="
+							!$store.state
+								.polymode ||
+								$store.state
+									.isPlaying
+						"
+					>
 						<template
 							v-slot:activator="{
 								on
 							}"
 						>
-							<v-container v-on="on" class="pa-1">
+							<v-container
+								v-on="on"
+								class="pa-1"
+							>
 								{{
 									$store
 										.state
@@ -82,9 +109,9 @@
 <script>
 export default {
 	name: "polyryhthm-selector",
-		data: ()=>({
-				polymode: false,
-		}),
+	data: () => ({
+		polymode: false
+	}),
 	computed: {
 		metrum: function() {
 			let a = [];
@@ -93,12 +120,22 @@ export default {
 			}
 			return a;
 		},
-			disabledClass: function(){
-					return {
-							"grey": !this.$store.state.polymode,
-							"lighten-2": !this.$store.state.polymode
-					}
-			}
+		disabledClass: function() {
+			return {
+				grey:
+					!this.$store.state.polymode ||
+					this.$store.state.isPlaying,
+				"lighten-3":
+					!this.$store.state.polymode ||
+					this.$store.state.isPlaying
+			};
+		},
+		disabledWhilePlaying: function() {
+			return {
+				grey: this.$store.state.isPlaying,
+				"lighten-3": this.$store.state.isPlaying
+			};
+		}
 	},
 	methods: {
 		setBeat(metronomeIndex, beat) {

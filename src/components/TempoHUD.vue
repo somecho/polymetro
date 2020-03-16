@@ -1,8 +1,13 @@
 <template>
-	<v-card outlined class="mt-4 py-2 d-flex justify-space-around align-center">
+	<v-card
+		outlined
+		class="mt-4 py-2 d-flex justify-space-around align-center"
+	>
 		<v-btn
-				fab
+			fab
 			class="elevation-1"
+			@mousedown="toggleCount(-1)"
+			@mouseup="toggleCount(-1)"
 			@touchstart="toggleCount(-1)"
 			@touchend="toggleCount(-1)"
 		>
@@ -12,8 +17,10 @@
 			{{ $store.state.tempo }}
 		</v-card>
 		<v-btn
-				fab 
+			fab
 			class="elevation-1"
+			@mousedown="toggleCount(1)"
+			@mouseup="toggleCount(1)"
 			@touchstart="toggleCount(1)"
 			@touchend="toggleCount(1)"
 			><v-icon>mdi-plus</v-icon>
@@ -31,7 +38,7 @@ export default {
 		toggleCount(inc) {
 			this.countOn = !this.countOn;
 			this.countOn ? (this.inc = inc) : (this.inc = 0);
-				console.log (this.inc)
+			console.log(this.inc);
 		},
 		updateTempo() {
 			var newTempo = this.$store.state.tempo + this.inc;

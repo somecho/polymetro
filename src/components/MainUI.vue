@@ -63,9 +63,7 @@ export default {
 		toggleMetronome() {
 			if (this.$store.state.isPlaying) {
 				this.loopA();
-				if (this.$store.state.polymode) {
-					this.loopB();
-				}
+				this.loopB();
 			} else {
 				clearTimeout(this.timeout1);
 				clearTimeout(this.timeout2);
@@ -110,11 +108,13 @@ export default {
 		loopB() {
 			let numBeats = this.$store.state.metronome[1].numBeats;
 			let accents = this.$store.state.metronome[1].accents;
-			this.counter2 = (this.counter2 + 1) % numBeats;
-			if (accents[this.counter2] == 1) {
-				this.clickB(659.25);
-			} else if (accents[this.counter2] == 2) {
-				this.clickB(1318.51);
+			if (this.$store.state.polymode) {
+				this.counter2 = (this.counter2 + 1) % numBeats;
+				if (accents[this.counter2] == 1) {
+					this.clickB(659.25);
+				} else if (accents[this.counter2] == 2) {
+					this.clickB(1318.51);
+				}
 			}
 			this.timeout2 = setTimeout(
 				this.loopB,
