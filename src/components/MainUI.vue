@@ -1,6 +1,5 @@
 <template>
 	<v-container>
-		<vue-p5 @setup="setup" @draw="draw"></vue-p5>
 		<beat-container
 			v-for="(beatContainer, index) in $store.state.metronome"
 			:key="beatContainer.id"
@@ -16,9 +15,6 @@ import BeatContainer from "@/components/BeatContainer.vue";
 import TempoHUD from "@/components/TempoHUD.vue";
 import PlayStopButton from "@/components/PlayStopButton.vue";
 import PolyrhythmSelector from "@/components/PolyrhythmSelector.vue";
-import VueP5 from "vue-p5";
-import p5 from "p5";
-import "p5/lib/addons/p5.sound";
 
 export default {
 	name: "main-ui",
@@ -26,19 +22,18 @@ export default {
 		BeatContainer,
 		TempoHUD,
 		PlayStopButton,
-		PolyrhythmSelector,
-		"vue-p5": VueP5
+		PolyrhythmSelector
 	},
 	data: () => ({
 		tempo: null,
-		osc1: null,
-		env1: null,
+		osc: null,
+		nextNotetime: null,
+		nextNotetime2: null,
 		timeout1: null,
 		counter1: -1,
-		osc2: null,
-		env2: null,
 		timeout2: null,
-		counter2: -1
+		counter2: -1,
+		audioContext: null
 	}),
 	computed: {
 		clickADuration: function() {
@@ -56,56 +51,23 @@ export default {
 			return (60 / secondaryTempo) * 1000;
 		}
 	},
-
-	mounted() {},
-
 	methods: {
 		toggleMetronome() {
 			if (this.$store.state.isPlaying) {
-				setTimeout(() => {
-					this.loopA();
-					this.loopB();
-				}, 100);
-			} else {
-				clearTimeout(this.timeout1);
-				clearTimeout(this.timeout2);
+				this.audioContext = new (window.AudioContext ||
+					window.webkitAudioContext)();
+
+				this.nextNotetime = this.audioContext.currentTime;
+				this.nextNotetime2 = this.audioContext.currentTime;
 				this.counter1 = -1;
 				this.counter2 = -1;
+				this.schedulerA();
+				this.schedulerB();
+			} else {
+				this.audioContext.close();
+				clearTimeout(this.timeout1);
+				clearTimeout(this.timeout2);
 			}
-		},
-		setup(sketch) {
-			var canvas = sketch.createCanvas(400, 400);
-			canvas.style("display", "none");
-			this.osc1 = new p5.SqrOsc();
-			this.osc2 = new p5.SqrOsc();
-			this.env1 = new p5.Envelope(0.0001, 1, 0.08, 0);
-			this.env2 = new p5.Envelope(0.0001, 1, 0.08, 0);
-		},
-
-		draw() {},
-		clickA(freq) {
-			this.osc1.freq(freq);
-			this.osc1.start();
-			this.env1.play(this.osc1);
-		},
-		clickB(freq) {
-			this.osc2.freq(freq);
-			this.osc2.start();
-			this.env2.play(this.osc2);
-		},
-		loopA() {
-			let numBeats = this.$store.state.metronome[0].numBeats;
-			let accents = this.$store.state.metronome[0].accents;
-			this.counter1 = (this.counter1 + 1) % numBeats;
-			if (accents[this.counter1] == 1) {
-				this.clickA(987.77);
-			} else if (accents[this.counter1] == 2) {
-				this.clickA(1975.53);
-			}
-			this.timeout1 = setTimeout(
-				this.loopA,
-				this.clickADuration
-			);
 		},
 		loopB() {
 			let numBeats = this.$store.state.metronome[1].numBeats;
@@ -113,14 +75,83 @@ export default {
 			if (this.$store.state.polymode) {
 				this.counter2 = (this.counter2 + 1) % numBeats;
 				if (accents[this.counter2] == 1) {
-					this.clickB(659.25);
+					this.clickB();
 				} else if (accents[this.counter2] == 2) {
-					this.clickB(1318.51);
+					this.clickB();
 				}
 			}
 			this.timeout2 = setTimeout(
 				this.loopB,
 				this.clickBDuration
+			);
+		},
+		playSound(time, freq) {
+			this.osc = this.audioContext.createOscillator();
+			this.osc.type = "square";
+			this.osc.connect(this.audioContext.destination);
+			this.osc.frequency.value = freq;
+			this.osc.start(time);
+			this.osc.stop(time + 0.05);
+		},
+		schedulerA() {
+			let numBeats = this.$store.state.metronome[0].numBeats;
+			let accents = this.$store.state.metronome[0].accents;
+
+			while (
+				this.nextNotetime <
+				this.audioContext.currentTime + 0.1
+			) {
+				this.counter1 = (this.counter1 + 1) % numBeats;
+				if (accents[this.counter1] == 1) {
+					this.playSound(
+						this.nextNotetime,
+						987.77
+					);
+				} else if (accents[this.counter1] == 2) {
+					this.playSound(
+						this.nextNotetime,
+						1975.53
+					);
+				}
+
+				this.nextNotetime += this.clickADuration / 1000;
+			}
+			this.timeout1 = window.setTimeout(
+				this.schedulerA,
+				20.0
+			);
+		},
+		schedulerB() {
+			let numBeats = this.$store.state.metronome[1].numBeats;
+			let accents = this.$store.state.metronome[1].accents;
+
+			while (
+				this.nextNotetime2 <
+				this.audioContext.currentTime + 0.1
+			) {
+				this.counter2 = (this.counter2 + 1) % numBeats;
+				if (this.$store.state.polymode) {
+					if (accents[this.counter2] == 1) {
+						this.playSound(
+							this.nextNotetime2,
+							659.25
+						);
+					} else if (
+						accents[this.counter2] == 2
+					) {
+						this.playSound(
+							this.nextNotetime2,
+							1318.51
+						);
+					}
+				}
+
+				this.nextNotetime2 +=
+					this.clickBDuration / 1000;
+			}
+			this.timeout2 = window.setTimeout(
+				this.schedulerB,
+				20.0
 			);
 		}
 	},
