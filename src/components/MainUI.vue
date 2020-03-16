@@ -36,10 +36,10 @@ export default {
 		synthParams: {
 			oscillator: { type: "triangle" },
 			envelope: {
-				attack: 0,
+				attack: 0.001,
 				decay: 0.1,
 				sustain: 0,
-				release: 0
+				release: 1 
 			}
 		}
 	}),
