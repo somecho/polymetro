@@ -34,12 +34,12 @@ export default {
 		timeoutB: null,
 		timeoutGroupB: [],
 		synthParams: {
-			oscillator: { type: "triangle" },
+			oscillator: { type: "square" },
 			envelope: {
 				attack: 0.001,
 				decay: 0.1,
 				sustain: 0,
-				release: 1 
+				release: 0.1 
 			}
 		}
 	}),
