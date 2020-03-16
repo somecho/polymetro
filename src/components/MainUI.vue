@@ -62,8 +62,10 @@ export default {
 	methods: {
 		toggleMetronome() {
 			if (this.$store.state.isPlaying) {
-				this.loopA();
-				this.loopB();
+				setTimeout(() => {
+					this.loopA();
+					this.loopB();
+				}, 100);
 			} else {
 				clearTimeout(this.timeout1);
 				clearTimeout(this.timeout2);
