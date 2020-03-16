@@ -1,5 +1,6 @@
 <template>
 	<v-container>
+		<vue-p5 @setup="setup" @draw="draw"></vue-p5>
 		<beat-container
 			v-for="(beatContainer, index) in $store.state.metronome"
 			:key="beatContainer.id"
@@ -14,8 +15,10 @@
 import BeatContainer from "@/components/BeatContainer.vue";
 import TempoHUD from "@/components/TempoHUD.vue";
 import PlayStopButton from "@/components/PlayStopButton.vue";
-import * as Tone from "tone";
 import PolyrhythmSelector from "@/components/PolyrhythmSelector.vue";
+import VueP5 from "vue-p5";
+import p5 from "p5";
+import "p5/lib/addons/p5.sound";
 
 export default {
 	name: "main-ui",
@@ -23,25 +26,19 @@ export default {
 		BeatContainer,
 		TempoHUD,
 		PlayStopButton,
-		PolyrhythmSelector
+		PolyrhythmSelector,
+		"vue-p5": VueP5
 	},
 	data: () => ({
 		tempo: null,
-		clickA: null,
-		timeoutA: null,
-		timeoutGroupA: [],
-		clickB: null,
-		timeoutB: null,
-		timeoutGroupB: [],
-		synthParams: {
-			oscillator: { type: "square" },
-			envelope: {
-				attack: 0.001,
-				decay: 0.1,
-				sustain: 0,
-				release: 0.1 
-			}
-		}
+		osc1: null,
+		env1: null,
+		timeout1: null,
+		counter1: -1,
+		osc2: null,
+		env2: null,
+		timeout2: null,
+		counter2: -1
 	}),
 	computed: {
 		clickADuration: function() {
@@ -60,85 +57,68 @@ export default {
 		}
 	},
 
-	mounted() {
-			Tone.context.latencyHint = "interactive"
-		this.tempo = this.$store.state.tempo;
-		this.clickA = new Tone.Synth(this.synthParams).toMaster();
-		this.clickB = new Tone.Synth(this.synthParams).toMaster();
-	},
+	mounted() {},
 
 	methods: {
 		toggleMetronome() {
 			if (this.$store.state.isPlaying) {
-				this.loopClickA();
-				this.loopClickB();
+				this.loopA();
+				if (this.$store.state.polymode) {
+					this.loopB();
+				}
 			} else {
-				clearTimeout(this.timeoutA);
-				clearTimeout(this.timeoutB);
-				for (
-					let i = 0;
-					i < this.timeoutGroupA.length;
-					i++
-				) {
-					clearTimeout(this.timeoutGroupA[i]);
-				}
-				for (
-					let i = 0;
-					i < this.timeoutGroupB.length;
-					i++
-				) {
-					clearTimeout(this.timeoutGroupB[i]);
-				}
+				clearTimeout(this.timeout1);
+				clearTimeout(this.timeout2);
+				this.counter1 = -1;
+				this.counter2 = -1;
 			}
 		},
-		soundClickA(note) {
-			this.clickA.triggerAttackRelease(note, "16n");
+		setup(sketch) {
+			var canvas = sketch.createCanvas(400, 400);
+			canvas.style("display", "none");
+			this.osc1 = new p5.SqrOsc();
+			this.osc2 = new p5.SqrOsc();
+			this.env1 = new p5.Envelope(0.0001, 1, 0.08, 0);
+			this.env2 = new p5.Envelope(0.0001, 1, 0.08, 0);
 		},
-		soundClickB(note) {
-			if (this.$store.state.polymode) {
-				this.clickB.triggerAttackRelease(note, "16n");
-			}
+
+		draw() {},
+		clickA(freq) {
+			this.osc1.freq(freq);
+			this.osc1.start();
+			this.env1.play(this.osc1);
 		},
-		loopClickA() {
-			var numBeatsA = this.$store.state.metronome[0].numBeats;
-			var accentsA = this.$store.state.metronome[0].accents;
-			for (let i = 0; i < numBeatsA; i++) {
-				let pitch;
-				if (accentsA[i] == 0) {
-						continue;
-				} else if (accentsA[i] == 1) {
-					pitch = "A5";
-				} else {
-					pitch = "A6";
-				}
-				this.timeoutGroupA[i] = setTimeout(() => {
-					this.soundClickA(pitch);
-				}, i * this.clickADuration + 150);
+		clickB(freq) {
+			this.osc2.freq(freq);
+			this.osc2.start();
+			this.env2.play(this.osc2);
+		},
+		loopA() {
+			let numBeats = this.$store.state.metronome[0].numBeats;
+			let accents = this.$store.state.metronome[0].accents;
+			this.counter1 = (this.counter1 + 1) % numBeats;
+			if (accents[this.counter1] == 1) {
+				this.clickA(987.77);
+			} else if (accents[this.counter1] == 2) {
+				this.clickA(1975.53);
 			}
-			this.timeoutA = setTimeout(
-				this.loopClickA,
-				this.clickADuration * numBeatsA
+			this.timeout1 = setTimeout(
+				this.loopA,
+				this.clickADuration
 			);
 		},
-		loopClickB() {
-			var numBeatsB = this.$store.state.metronome[1].numBeats;
-			var accentsB = this.$store.state.metronome[1].accents;
-			for (let i = 0; i < numBeatsB; i++) {
-				let pitch;
-				if (accentsB[i] == 0) {
-						continue;
-				} else if (accentsB[i] == 1) {
-					pitch = "C6";
-				} else {
-					pitch = "C5";
-				}
-				this.timeoutGroupB[i] = setTimeout(() => {
-					this.soundClickB(pitch);
-				}, i * this.clickBDuration + 150);
+		loopB() {
+			let numBeats = this.$store.state.metronome[1].numBeats;
+			let accents = this.$store.state.metronome[1].accents;
+			this.counter2 = (this.counter2 + 1) % numBeats;
+			if (accents[this.counter2] == 1) {
+				this.clickB(659.25);
+			} else if (accents[this.counter2] == 2) {
+				this.clickB(1318.51);
 			}
-			this.timeoutB = setTimeout(
-				this.loopClickB,
-				this.clickBDuration * numBeatsB
+			this.timeout2 = setTimeout(
+				this.loopB,
+				this.clickBDuration
 			);
 		}
 	},
