@@ -4,7 +4,7 @@ module.exports = {
   ],
 		pwa: {
 				name: 'Polymetro',
-				themeColor: '#00E5F',
+				themeColor: '#00E5FF',
 				appleMobileWebAppCapable: 'yes',
 		}
 }
