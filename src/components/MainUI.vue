@@ -69,23 +69,7 @@ export default {
 				clearTimeout(this.timeout2);
 			}
 		},
-		loopB() {
-			let numBeats = this.$store.state.metronome[1].numBeats;
-			let accents = this.$store.state.metronome[1].accents;
-			if (this.$store.state.polymode) {
-				this.counter2 = (this.counter2 + 1) % numBeats;
-				if (accents[this.counter2] == 1) {
-					this.clickB();
-				} else if (accents[this.counter2] == 2) {
-					this.clickB();
-				}
-			}
-			this.timeout2 = setTimeout(
-				this.loopB,
-				this.clickBDuration
-			);
-		},
-		playSound(time, freq) {
+	playSound(time, freq) {
 			this.osc = this.audioContext.createOscillator();
 			this.osc.type = "square";
 			this.osc.connect(this.audioContext.destination);
