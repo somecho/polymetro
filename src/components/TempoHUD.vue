@@ -6,12 +6,14 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@mousedown="toggleCount(-1)"
-			@mouseup="toggleCount(-1)"
 			@touchstart="toggleCount(-1)"
 			@touchend="toggleCount(-1)"
 		>
-			<v-icon>mdi-minus</v-icon>
+			<v-icon
+				@mousedown="toggleCount(-1)"
+				@mouseup="toggleCount(-1)"
+				>mdi-minus</v-icon
+			>
 		</v-btn>
 		<v-card class="px-4 py-2 my-2 headline" outlined>
 			{{ $store.state.tempo }}
@@ -19,11 +21,13 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@mousedown="toggleCount(1)"
-			@mouseup="toggleCount(1)"
 			@touchstart="toggleCount(1)"
 			@touchend="toggleCount(1)"
-			><v-icon>mdi-plus</v-icon>
+			><v-icon
+				@mousedown="toggleCount(1)"
+				@mouseup="toggleCount(1)"
+				>mdi-plus</v-icon
+			>
 		</v-btn>
 	</v-card>
 </template>
