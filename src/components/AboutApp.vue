@@ -3,10 +3,13 @@
 		<h1>Polymetro</h1>
 		<p class="text-justify">
 			Polymetro is a simple metronome that can play
-			polyrhythms. Turn on the second metronome to practice
-			polyrhythms!
+			polyrhythms. Make sure your phone is NOT in silent mode.
+			Turn on the second metronome to practice polyrhythms!
 		</p>
-		<p>Tap on the circles to toggle accents. To change the rhythm, tap the numbers to select the rhythm you want.</p>
+		<p>
+			Tap on the circles to toggle accents. To change the
+			rhythm, tap the numbers to select the rhythm you want.
+		</p>
 		<v-divider class="my-4"></v-divider>
 		<h2>Install</h2>
 		<p>This webapp can be installed as an app on your phone.</p>
@@ -27,7 +30,7 @@
 			opening popup "Add to Home Screen".
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<p>Polymetro 1.0.4</p>
+		<p>Polymetro 1.0.5</p>
 		<p>©2020 Samuel Cho</p>
 	</v-container>
 </template>

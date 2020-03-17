@@ -24,12 +24,8 @@
 	</v-card>
 </template>
 <script>
-import LongPress from 'vue-directive-long-press'
 export default {
 	name: "tempo-HUD",
-		directives: {
-				'long-press': LongPress
-		},
 	data: () => ({
 		countOn: false,
 		inc: 0
