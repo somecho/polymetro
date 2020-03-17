@@ -1,4 +1,4 @@
-# POLYMETRO - Simple Polyrhythmic App 
+# POLYMETRO - Simple Polyrhythmic Metronome
 Homepage: https://polymetro.xyz
 
 
