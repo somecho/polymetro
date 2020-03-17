@@ -1,11 +1,12 @@
 <template>
 	<v-card outlined class="cyan lighten-5">
-		<v-container class="d-flex justify-space-between align-center">
+		<v-container class="d-flex  justify-space-between ma-0 pa-0 pl-4 align-center">
 			<v-card
-				class="d-flex flex-column align-center pa-2 pb-0"
+				class="d-flex  flex-column align-center pa-2 pb-0"
 				outlined
 			>
 				<v-container
+					
 					class=" text-center pa-0 ma-0 overline"
 					>second metronome</v-container
 				>
@@ -14,10 +15,10 @@
 					class="ma-0"
 				></v-switch>
 			</v-card>
-
-			<v-container
-				class="d-flex justify-end align-center headline"
-			>
+			<v-container >
+			<v-container class=" ma-0 pa-0 d-flex flex-column justify-center align-center">
+			<p class="overline ">Click to select</p>
+			<v-container class=" ma-0 pa-0 d-flex justify-center align-center">
 				<v-card outlined class="px-4 py-2 mx-2" :class="disabledWhilePlaying">
 					<v-menu :disabled="$store.state.isPlaying">
 						<template
@@ -103,6 +104,8 @@
 					</v-menu>
 				</v-card>
 			</v-container>
+			</v-container>
+			</v-container>
 		</v-container>
 	</v-card>
 </template>
@@ -164,4 +167,8 @@ export default {
 	}
 };
 </script>
-<style scoped></style>
+<style scoped>
+.cont1 {
+		border: solid black;
+}
+</style>

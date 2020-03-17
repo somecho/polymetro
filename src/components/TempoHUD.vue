@@ -1,7 +1,7 @@
 <template>
 	<v-card
 		outlined
-		class="mt-4 py-2 d-flex justify-space-around align-center"
+		class="cyan lighten-5 mt-4 py-2 d-flex justify-space-around align-center"
 	>
 		<v-btn
 			fab
