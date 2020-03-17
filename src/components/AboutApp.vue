@@ -30,7 +30,7 @@
 			opening popup "Add to Home Screen".
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<p>Polymetro 1.0.9</p>
+		<p>Polymetro 1.0.10</p>
 		<p>©2020 Samuel Cho</p>
 	</v-container>
 </template>

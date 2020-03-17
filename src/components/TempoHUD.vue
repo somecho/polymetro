@@ -7,13 +7,10 @@
 			fab
 			class="elevation-1"
 			@click="singleInc(-1)"
-			@pointerdown="incTempo(-10)"
-			@pointerup="stopInc"
 			@mousedown="incTempo(-10)"
 			@mouseup="stopInc"
 			@touchstart="incTempo(-10)"
 			@touchend="stopInc"
-			
 		>
 			<v-icon>mdi-minus</v-icon>
 		</v-btn>
@@ -24,8 +21,6 @@
 			fab
 			class="elevation-1"
 			@click="singleInc(1)"
-			@pointerdown="incTempo(10)"
-			@pointerup="stopInc"
 			@mousedown="incTempo(10)"
 			@mouseup="stopInc"
 			@touchstart="incTempo(10)"
@@ -39,25 +34,27 @@ export default {
 	name: "tempo-HUD",
 	data: () => ({
 		intervalId: null,
-			timeoutId: null,
+		timeoutId: null
 	}),
 	methods: {
 		incTempo(inc) {
-				this.timeoutId = setTimeout(()=>{
-			this.intervalId = setInterval(() => {
-				//this.incTempo(inc);
-					this.$store.state.tempo += inc
-			}, 250);
-				}, 300)
+			this.timeoutId = setTimeout(() => {
+				this.intervalId = setInterval(() => {
+					//this.incTempo(inc);
+					this.$store.state.tempo += inc;
+				}, 250);
+			}, 300);
+				console.log(this.timeoutId)
 		},
 		stopInc() {
 			clearTimeout(this.timeoutId);
-				clearInterval(this.intervalId)
-
+				
+			clearInterval(this.intervalId);
+			console.log(this.timeoutId,123);
 		},
-			singleInc(inc){
-					this.$store.state.tempo += inc
-			}
+		singleInc(inc) {
+			this.$store.state.tempo += inc;
+		}
 	}
 };
 </script>
