@@ -47,7 +47,7 @@ export default {
 			this.intervalId = setInterval(() => {
 				//this.incTempo(inc);
 					this.$store.state.tempo += inc
-			}, 500);
+			}, 250);
 				}, 300)
 		},
 		stopInc() {
