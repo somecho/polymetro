@@ -6,10 +6,10 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@touchstart="toggleCount(-1)"
-			@touchend="toggleCount(-1)"
-			@mousedown="toggleCount(-1)"
-			@mouseup="toggleCount(-1)"
+			@touchstart.native="toggleCount(-1)"
+			@touchend.native="toggleCount(-1)"
+			@mousedown.native="toggleCount(-1)"
+			@mouseup.native="toggleCount(-1)"
 		>
 			<v-icon>mdi-minus</v-icon>
 		</v-btn>
@@ -19,10 +19,10 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@touchstart="toggleCount(1)"
-			@touchend="toggleCount(1)"
-			@mousedown="toggleCount(1)"
-			@mouseup="toggleCount(1)"
+			@touchstart.native="toggleCount(1)"
+			@touchend.native="toggleCount(1)"
+			@mousedown.native="toggleCount(1)"
+			@mouseup.native="toggleCount(1)"
 			><v-icon>mdi-plus</v-icon>
 		</v-btn>
 	</v-card>
