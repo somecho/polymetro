@@ -1,25 +1,20 @@
-# polymetro-2
-webaudio
+# POLYMETRO - Simple Polyrhythmic App 
+Homepage: https://polymetro.xyz
 
-## Project setup
-```
-npm install
-```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## About
 
-### Compiles and minifies for production
-```
-npm run build
-```
+Polymetro is a simple polyrhythmic metronom based on the traditional digital metronome.
 
-### Lints and fixes files
-```
-npm run lint
-```
+Features
+- Basic traditional metronome
+- Polyrhythm mode 
+- Supports polyrhythms with groups between 1 and 9 (eg. 1:2, 5:3, 9:8, etc.)
+- Three accent kinds: Strong, normal and empty 
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## To do 
+- Add internationalizations
+- - Deutsch
+- - Chinese 
+
