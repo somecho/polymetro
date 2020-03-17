@@ -1,3 +1,5 @@
+![](https://polymetro.xyz/img/logo.2c9148c1.svg)
+
 # POLYMETRO - Simple Polyrhythmic Metronome
 Homepage: https://polymetro.xyz
 
