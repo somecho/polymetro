@@ -19,8 +19,8 @@
 			<v-container class=" ma-0 pa-0 d-flex flex-column justify-center align-center">
 			<p class="overline ">Click to select</p>
 			<v-container class=" ma-0 pa-0 d-flex justify-center align-center">
-				<v-card outlined class="px-4 py-2 mx-2" :class="disabledWhilePlaying">
-					<v-menu :disabled="$store.state.isPlaying">
+				<v-card outlined class=" mx-2" :class="disabledWhilePlaying">
+					<v-menu  :disabled="$store.state.isPlaying">
 						<template
 							v-slot:activator="{
 								on
@@ -28,7 +28,7 @@
 						>
 							<v-container
 								v-on="on"
-								class="pa-1"
+								class=" px-4 py2"
 							>
 								{{
 									$store
@@ -58,7 +58,7 @@
 				:
 				<v-card
 					outlined
-					class=" px-4 py-2 mx-2"
+					class=" mx-2"
 					:class="disabledClass"
 				>
 					<v-menu
@@ -76,7 +76,7 @@
 						>
 							<v-container
 								v-on="on"
-								class="pa-1"
+								class=" px-4 py-3"
 							>
 								{{
 									$store

@@ -43,6 +43,7 @@ export default {
 <style>
 @media (max-width: 850px) {
 	#app {
+			position: fixed;
 		width: 100vw;
 		height: 100vh;
 	}
