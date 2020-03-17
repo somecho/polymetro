@@ -3,9 +3,9 @@
 		<div class="mobile-notice">{{ mobileNotice }}</div>
 		<v-container
 			id="app"
-			class="pa-2 cyan accent-4 app root-container"
+			class="d-flex align-center pa-2 cyan accent-4 app root-container"
 		>
-			<v-card outlined class="ma-0 mb-1 elevation-4">
+			<v-card outlined class="ma-0 mb-6 elevation-4">
 				<router-view />
 			</v-card>
 
