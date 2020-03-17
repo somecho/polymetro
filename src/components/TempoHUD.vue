@@ -8,12 +8,10 @@
 			class="elevation-1"
 			@touchstart="toggleCount(-1)"
 			@touchend="toggleCount(-1)"
+			@mousedown="toggleCount(-1)"
+			@mouseup="toggleCount(-1)"
 		>
-			<v-icon
-				@mousedown="toggleCount(-1)"
-				@mouseup="toggleCount(-1)"
-				>mdi-minus</v-icon
-			>
+			<v-icon>mdi-minus</v-icon>
 		</v-btn>
 		<v-card class="px-4 py-2 my-2 headline" outlined>
 			{{ $store.state.tempo }}
@@ -23,11 +21,9 @@
 			class="elevation-1"
 			@touchstart="toggleCount(1)"
 			@touchend="toggleCount(1)"
-			><v-icon
-				@mousedown="toggleCount(1)"
-				@mouseup="toggleCount(1)"
-				>mdi-plus</v-icon
-			>
+			@mousedown="toggleCount(1)"
+			@mouseup="toggleCount(1)"
+			><v-icon>mdi-plus</v-icon>
 		</v-btn>
 	</v-card>
 </template>
@@ -41,14 +37,16 @@ export default {
 	methods: {
 		toggleCount(inc) {
 			this.countOn = !this.countOn;
+
 			this.countOn ? (this.inc = inc) : (this.inc = 0);
-			console.log(this.inc);
 		},
 		updateTempo() {
 			var newTempo = this.$store.state.tempo + this.inc;
-			this.$set(this.$store.state, "tempo", newTempo);
 			setTimeout(this.updateTempo, 50);
-		}
+			this.$set(this.$store.state, "tempo", newTempo);
+			//requestAnimationFrame(this.updateTempo);
+		},
+		debug() {}
 	},
 	created() {
 		this.updateTempo();

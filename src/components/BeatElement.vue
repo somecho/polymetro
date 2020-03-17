@@ -1,5 +1,5 @@
 <template>
-	<div @touchend="cycleAccent" class="pa-0 ma-0">
+	<div @click="cycleAccent" @touchend="cycleAccent" class="pa-0 ma-0">
 		<v-icon
 			color=" accent-4"
 			v-if="accent == 2"
