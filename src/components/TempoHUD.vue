@@ -6,12 +6,14 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@pointerdown="toggleCount(-1)"
-			@pointerup="toggleCount(-1)"
-			@mousedown="toggleCount(-1)"
-			@mouseup="toggleCount(-1)"
-			@touchstart="toggleCount(-1)"
-			@touchend="toggleCount(-1)"
+			@click="singleInc(-1)"
+			@pointerdown="incTempo(-10)"
+			@pointerup="stopInc"
+			@mousedown="incTempo(-10)"
+			@mouseup="stopInc"
+			@touchstart="incTempo(-10)"
+			@touchend="stopInc"
+			
 		>
 			<v-icon>mdi-minus</v-icon>
 		</v-btn>
@@ -21,12 +23,13 @@
 		<v-btn
 			fab
 			class="elevation-1"
-			@pointerdown="toggleCount(1)"
-			@pointerup="toggleCount(1)"
-			@mousedown="toggleCount(1)"
-			@mouseup="toggleCount(1)"
-			@touchstart="toggleCount(1)"
-			@touchend="toggleCount(1)"
+			@click="singleInc(1)"
+			@pointerdown="incTempo(10)"
+			@pointerup="stopInc"
+			@mousedown="incTempo(10)"
+			@mouseup="stopInc"
+			@touchstart="incTempo(10)"
+			@touchend="stopInc"
 			><v-icon>mdi-plus</v-icon>
 		</v-btn>
 	</v-card>
@@ -35,25 +38,26 @@
 export default {
 	name: "tempo-HUD",
 	data: () => ({
-		countOn: false,
-		inc: 0
+		intervalId: null,
+			timeoutId: null,
 	}),
 	methods: {
-		toggleCount(inc) {
-			this.countOn = !this.countOn;
+		incTempo(inc) {
+				this.timeoutId = setTimeout(()=>{
+			this.intervalId = setInterval(() => {
+				//this.incTempo(inc);
+					this.$store.state.tempo += inc
+			}, 500);
+				}, 300)
+		},
+		stopInc() {
+			clearTimeout(this.timeoutId);
+				clearInterval(this.intervalId)
 
-			this.countOn ? (this.inc = inc) : (this.inc = 0);
 		},
-		updateTempo() {
-			var newTempo = this.$store.state.tempo + this.inc;
-			setTimeout(this.updateTempo, 50);
-			this.$set(this.$store.state, "tempo", newTempo);
-			//requestAnimationFrame(this.updateTempo);
-		},
-		debug() {}
-	},
-	created() {
-		this.updateTempo();
+			singleInc(inc){
+					this.$store.state.tempo += inc
+			}
 	}
 };
 </script>
