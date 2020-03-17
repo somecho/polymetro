@@ -18,4 +18,4 @@ Features
 - - Deutsch
 - - Chinese 
 
-Creator: [Samuel Cho](www.twitter.com/_samuelcho)
+Creator: [Samuel Cho](https://www.twitter.com/_samuelcho)
