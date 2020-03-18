@@ -69,7 +69,7 @@
 										locale.locale
 									)
 							"
-								class="my-4 px-4 py-2 text-center" 
+							class="my-4 px-4 py-2 text-center"
 						>
 							{{ locale.lang }}
 						</v-card>
@@ -81,10 +81,13 @@
 </template>
 
 <script>
-import i18n from '@/plugins/i18n' 
+import i18n from "@/plugins/i18n";
 
 export default {
 	name: "App",
+	beforeMount() {
+		this.delay(2000);
+	},
 	data: () => ({
 		mobileNotice:
 			"Polymetro is a webapp only available on mobile phones. Go to polymetro.xyz on your phone's browser to check it out!",
@@ -97,8 +100,14 @@ export default {
 	}),
 	methods: {
 		changeLocale(locale) {
-				i18n.locale = locale
-				this.overlay = false
+			i18n.locale = locale;
+			this.overlay = false;
+		},
+		delay(ms) {
+			const startPoint = new Date().getTime();
+			while (new Date().getTime() - startPoint <= ms) {
+					/* wait */
+			}
 		}
 	}
 };
@@ -122,7 +131,7 @@ export default {
 		color: inherit;
 	}
 	.main-ui {
-			min-width: 97vw;
+		min-width: 97vw;
 	}
 }
 @media (min-width: 850px) {
