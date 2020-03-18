@@ -7,7 +7,7 @@
 			>
 				<v-container
 					
-					class=" text-center pa-0 ma-0 overline"
+					class="wide text-center pa-0 ma-0 mb-2 overline"
 					>{{ $t('polymodeSwitch') }} </v-container
 				>
 				<v-switch
@@ -168,7 +168,7 @@ export default {
 };
 </script>
 <style scoped>
-.cont1 {
-		border: solid black;
+.wide {
+		min-width: 75px;
 }
 </style>
