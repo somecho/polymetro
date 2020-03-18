@@ -2,36 +2,32 @@
 	<v-container class="about pa-4">
 		<h1>Polymetro</h1>
 		<p class="text-justify">
-			Polymetro is a simple metronome that can play
-			polyrhythms. Make sure your phone is NOT in silent mode.
-			Turn on the second metronome to practice polyrhythms!
+			{{ $t("appDescription") }}
 		</p>
 		<p>
-			Tap on the circles to toggle accents. To change the
-			rhythm, tap the numbers to select the rhythm you want.
+			{{ $t("appInstruction") }}
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<h2>Install</h2>
-		<p>This webapp can be installed as an app on your phone.</p>
-		<h4>Chrome</h4>
+		<h2>{{ $t("install") }}</h2>
+		<p>{{ $t("installDescription") }}</p>
+		<h4>{{ $t("safariTitle") }}</h4>
 		<p>
-			Click on the menu icon and in the menu "Add to home
-			screen".
+			{{ $t("safari") }}
 		</p>
-		<h4>Firefox</h4>
+
+		<h4>{{ $t("chromeTitle") }}</h4>
 		<p>
-			In the address bar, to the right of the page URL you
-			should see a little house icon with a plus symbol in the
-			middle. Click on it and '+ Add to home screen'.
+			{{ $t("chrome") }}
 		</p>
-		<h4>Safari</h4>
+		<h4>{{ $t("firefoxTitle") }}</h4>
 		<p>
-			Click on the share button (box with up arrow) and in the
-			opening popup "Add to Home Screen".
+			{{ $t("firefox") }}
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<p>Polymetro 1.0.10</p>
-		<p>©2020 Samuel Cho</p>
+		<p class="caption">Polymetro 1.1.0</p>
+		<p class="caption">
+			© 2020 <a href="https://samuel-cho.net">Samuel Cho</a>
+		</p>
 	</v-container>
 </template>
 <script>

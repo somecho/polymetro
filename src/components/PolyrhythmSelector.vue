@@ -7,8 +7,8 @@
 			>
 				<v-container
 					
-					class=" text-center pa-0 ma-0 overline"
-					>second metronome</v-container
+					class="wide text-center pa-0 ma-0 mb-2 overline"
+					>{{ $t('polymodeSwitch') }} </v-container
 				>
 				<v-switch
 					v-model="$store.state.polymode"
@@ -17,7 +17,7 @@
 			</v-card>
 			<v-container >
 			<v-container class=" ma-0 pa-0 d-flex flex-column justify-center align-center">
-			<p class="overline ">Click to select</p>
+					<p class="overline ">{{ $t('tapToChoose') }}</p>
 			<v-container class=" ma-0 pa-0 d-flex justify-center align-center">
 				<v-card outlined class=" mx-2" :class="disabledWhilePlaying">
 					<v-menu  :disabled="$store.state.isPlaying">
@@ -168,7 +168,7 @@ export default {
 };
 </script>
 <style scoped>
-.cont1 {
-		border: solid black;
+.wide {
+		min-width: 75px;
 }
 </style>
