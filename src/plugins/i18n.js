@@ -60,6 +60,6 @@ const messages = {
 	}
 };
 
-const i18n = new VueI18n({ locale: "CN", fallbackLocale: "EN", messages });
+const i18n = new VueI18n({ locale: "EN", fallbackLocale: "EN", messages });
 
 export default i18n;
