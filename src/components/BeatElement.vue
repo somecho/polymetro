@@ -1,10 +1,25 @@
 <template>
 	<div @click="cycleAccent" class="pa-0 ma-0">
 		<v-icon
+			v-if="accent == 2"
 			class="ma-0 primary--text  display-1"
 			:class="disabledClass"
 		>
-			{{ icon }}
+			mdi-circle
+		</v-icon>
+		<v-icon
+			v-if="accent == 1"
+			class="ma-0 primary--text  display-1"
+			:class="disabledClass"
+		>
+			mdi-circle-half-full
+		</v-icon>
+		<v-icon
+			v-if="accent == 0"
+			class="ma-0 primary--text  display-1"
+			:class="disabledClass"
+		>
+			mdi-circle-outline
 		</v-icon>
 	</div>
 </template>
@@ -29,19 +44,15 @@ export default {
 					!this.$store.state.polymode
 			};
 		},
-		icon: function() {
-			switch (this.accent) {
-				case 2:
-					return "mdi-circle";
-					break;
-				case 1:
-					return "mdi-circle-half-full";
-					break;
-				case 0:
-					return "mdi-circle-outline";
-					break;
-			}
-		}
+//		icon: function() {
+//			if (this.accent == 2) {
+//				return "mdi-circle";
+//			} else if (this.accent == 1) {
+//				return "mdi-circle-half-full";
+//			} else if (this.accent == 0) {
+//				return "mdi-circle-outline";
+//			}
+//		}
 	},
 	methods: {
 		cycleAccent() {

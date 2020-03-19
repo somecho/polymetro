@@ -1,10 +1,13 @@
 <template>
-	<v-container class="d-flex justify-center">
+	<v-container class="align-center d-flex justify-center py-2 px-0"
+			>
+					<span class="horizontal-line"></span>
 		<v-btn
 			fab
-			class="elevation-1"
-			width="100"
-			height="100"
+			outlined
+			width="90"
+			height="90"
+			style="border: solid 1px #DADADA;"
 			@click="
 				togglePlay();
 				handleClick();
@@ -13,7 +16,6 @@
 			<v-icon
 				class="display-3"
 				v-if="!$store.state.isPlaying"
-				
 			>
 				mdi-play</v-icon
 			>
@@ -21,6 +23,7 @@
 				mdi-stop</v-icon
 			>
 		</v-btn>
+					<span class="horizontal-line"></span>
 	</v-container>
 </template>
 <script>
@@ -40,4 +43,10 @@ export default {
 	}
 };
 </script>
-<style scoped></style>
+<style scoped>
+.horizontal-line {
+		display: block;
+		width: 100vw;
+		border-top: 1px solid #DADADA;
+}
+</style>

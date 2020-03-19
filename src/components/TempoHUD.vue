@@ -1,5 +1,5 @@
 <template>
-	<v-container class="px-8 fluid ma-0 d-flex justify-space-between">
+	<v-container class="px-6 fluid ma-0 d-flex justify-space-between">
 		<div
 			class="primary--text tempo-button"
 			@click="singleInc(-1)"
@@ -10,8 +10,8 @@
 		>
 			<div>-</div>
 		</div>
-		<v-card class="px-8 py-2  display-1"  outlined>
-			{{ $store.state.tempo }}
+		<v-card class="px-8 py-2  display-1" outlined>
+			<v-card-text>{{ $store.state.tempo }}</v-card-text>
 		</v-card>
 		<div
 			class="tempo-button primary--text"
@@ -61,6 +61,7 @@ export default {
 	justify-content: center;
 	font-size: 3rem;
 	line-height: 1;
+	width: 50px;
 }
 .tempo-button > * {
 	-webkit-user-select: none;
