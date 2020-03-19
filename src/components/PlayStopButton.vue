@@ -5,8 +5,8 @@
 		<v-btn
 			fab
 			outlined
-			width="90"
-			height="90"
+			width="80"
+			height="80"
 			style="border: solid 1px #DADADA;"
 			@click="
 				togglePlay();

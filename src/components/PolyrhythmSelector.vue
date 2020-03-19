@@ -1,5 +1,5 @@
 <template>
-	<v-container class="d-flex justify-space-between">
+	<v-container class="pa-0 d-flex justify-space-between">
 		<v-container
 			class="d-flex switch-box  flex-column align-center pa-2 pb-0"
 		>
@@ -67,15 +67,10 @@
 				<v-card
 					outlined
 					class=" mx-2"
-					:class="disabledClass"
+					:class="disabledWhilePlaying"
 				>
 					<v-menu
-						:disabled="
-							!$store.state
-								.polymode ||
-								$store.state
-									.isPlaying
-						"
+						:disabled=" $store.state.isPlaying "
 					>
 						<template
 							v-slot:activator="{
@@ -129,20 +124,9 @@ export default {
 			}
 			return a;
 		},
-		disabledClass: function() {
-			return {
-				grey:
-					!this.$store.state.polymode ||
-					this.$store.state.isPlaying,
-				"lighten-3":
-					!this.$store.state.polymode ||
-					this.$store.state.isPlaying
-			};
-		},
 		disabledWhilePlaying: function() {
 			return {
-				grey: this.$store.state.isPlaying,
-				"lighten-3": this.$store.state.isPlaying
+				"grey lighten-1": this.$store.state.isPlaying
 			};
 		}
 	},
@@ -178,7 +162,7 @@ export default {
 	width: 30vw;
 }
 .tap-box {
-		width: 50vw;
+	width: 50vw;
 }
 .debug {
 	border: solid black 1px;

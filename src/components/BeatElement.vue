@@ -2,21 +2,21 @@
 	<div @click="cycleAccent" class="pa-0 ma-0">
 		<v-icon
 			v-if="accent == 2"
-			class="ma-0 primary--text  display-1"
+			class="ma-0  display-1"
 			:class="disabledClass"
 		>
 			mdi-circle
 		</v-icon>
 		<v-icon
 			v-if="accent == 1"
-			class="ma-0 primary--text  display-1"
+			class="ma-0   display-1"
 			:class="disabledClass"
 		>
 			mdi-circle-half-full
 		</v-icon>
 		<v-icon
 			v-if="accent == 0"
-			class="ma-0 primary--text  display-1"
+			class="ma-0 display-1"
 			:class="disabledClass"
 		>
 			mdi-circle-outline
@@ -39,9 +39,12 @@ export default {
 		},
 		disabledClass: function() {
 			return {
-				"text--lighten-5":
+					
+				"grey--text text--lighten-3":
 					this.metronomeIndex == 1 &&
-					!this.$store.state.polymode
+					!this.$store.state.polymode,
+				"primary--text":
+					this.metronomeIndex == 0 || this.$store.state.polymode
 			};
 		},
 //		icon: function() {

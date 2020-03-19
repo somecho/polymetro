@@ -9,7 +9,7 @@
 
 			<!-- actual ui -->
 			<!-- TOOLBAR -->
-			<v-toolbar flat dense class="elevation-2">
+			<v-toolbar flat dense class="mb-3 elevation-2">
 				<v-btn icon @click="overlay = !overlay">
 					<v-icon class="primary--text">
 						mdi-translate
@@ -20,22 +20,31 @@
 					polymetro
 				</v-toolbar-title>
 				<v-spacer />
-				<v-btn icon>
-					<router-link to="about">
-						<v-icon class="primary--text">
-							mdi-information
-						</v-icon>
-					</router-link>
+				<v-btn icon @click="drawer = !drawer">
+					<v-icon class="primary--text">
+						mdi-information
+					</v-icon>
 				</v-btn>
 			</v-toolbar>
 			<!-- MAINUI -->
 
 			<router-view />
+			<!-- ABOUT -->
+			<v-navigation-drawer
+				v-model="drawer"
+				:width="screenWidth"
+				absolute
+				right
+			>
+			<about-app @click="drawer =! drawer"></about-app>
+			</v-navigation-drawer>
 
 			<!-- language select overlay -->
 
 			<v-overlay :value="overlay" opacity="0.8">
-				<v-item-group class="d-flex flex-column align-center">
+				<v-item-group
+					class="d-flex flex-column align-center"
+				>
 					<v-item
 						v-slot:default="{
 							active,
@@ -62,8 +71,8 @@
 							{{ locale.lang }}
 						</v-card>
 					</v-item>
-					<v-btn icon @click="overlay =! overlay">
-						<v-icon @class="display-1">
+					<v-btn icon @click="overlay = !overlay">
+						<v-icon @class="display - 1">
 							mdi-window-close
 						</v-icon>
 					</v-btn>
@@ -75,22 +84,29 @@
 
 <script>
 import i18n from "@/plugins/i18n";
+import AboutApp from "@/components/AboutApp.vue";
 
 export default {
 	name: "App",
-	beforeMount() {
-		this.delay(2000);
+	components: {
+		AboutApp
 	},
 	data: () => ({
 		mobileNotice:
 			"Polymetro is a webapp only available on mobile phones. Go to polymetro.xyz on your phone's browser to check it out!",
 		overlay: false,
+		drawer: true,
 		locales: [
 			{ id: 0, locale: "EN", lang: "English" },
 			{ id: 1, locale: "DE", lang: "Deutsch" },
 			{ id: 2, locale: "CN", lang: "中文" }
 		]
 	}),
+	computed: {
+		screenWidth() {
+			return window.innerWidth;
+		}
+	},
 	methods: {
 		changeLocale(locale) {
 			i18n.locale = locale;
@@ -125,6 +141,9 @@ export default {
 	}
 	.main-ui {
 		min-width: 97vw;
+	}
+	.about-drawer {
+		width: 100vw;
 	}
 }
 @media (min-width: 850px) {

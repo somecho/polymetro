@@ -1,5 +1,8 @@
 <template>
-	<v-container class="about pa-4">
+	<v-container class="about ">
+			<v-btn @click="()=>{$emit('click')}" icon class="back-icon">
+			<v-icon>mdi-keyboard-backspace</v-icon>
+		</v-btn>
 		<h1>Polymetro</h1>
 		<p class="text-justify">
 			{{ $t("appDescription") }}
@@ -37,7 +40,14 @@ export default {
 </script>
 <style scoped>
 .about {
-	max-height: 87.5vh;
+	top: 8vh;
+	position: absolute;
+	height: 92vh;
 	overflow-y: auto;
+}
+.back-icon {
+		position: fixed;
+		top: 1vh;
+		left: 2vw;
 }
 </style>
