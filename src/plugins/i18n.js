@@ -8,7 +8,7 @@ const messages = {
 		polymodeSwitch: "Second metronome",
 		tapToChoose: "Tap to choose",
 		appDescription:
-			"Polymetro is a simple metronome that can play polyrhythms.ajiaMake sure your phone is NOT in silent mode.  Turn on the second metronome to practice polyrhythms!",
+			"Polymetro is a simple metronome that can play polyrhythms. Make sure your phone is NOT in silent mode.  Turn on the second metronome to practice polyrhythms!",
 		appInstruction:
 			"Tap on the circles to toggle accents. To change the rhythm, tap the numbers to select the rhythm you want.",
 		install: "Installation",

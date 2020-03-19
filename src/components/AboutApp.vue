@@ -1,5 +1,5 @@
 <template>
-	<v-container class="about ">
+	<v-container class="about px-4">
 			<v-btn @click="()=>{$emit('click')}" icon class="back-icon">
 			<v-icon>mdi-keyboard-backspace</v-icon>
 		</v-btn>
@@ -27,7 +27,7 @@
 			{{ $t("firefox") }}
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<p class="caption">Polymetro 1.1.1</p>
+		<p class="caption">Polymetro 2.0.0</p>
 		<p class="caption">
 			© 2020 <a href="https://samuel-cho.net">Samuel Cho</a>
 		</p>
