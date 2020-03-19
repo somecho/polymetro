@@ -8,11 +8,11 @@
 			</div>
 
 			<!-- actual ui -->
-			<!-- TOOLBAR --> 
+			<!-- TOOLBAR -->
 			<v-toolbar flat dense class="elevation-2">
 				<v-btn icon @click="overlay = !overlay">
 					<v-icon class="primary--text">
-							mdi-translate
+						mdi-translate
 					</v-icon>
 				</v-btn>
 				<v-spacer />
@@ -30,12 +30,12 @@
 			</v-toolbar>
 			<!-- MAINUI -->
 
-				<router-view />
+			<router-view />
 
 			<!-- language select overlay -->
 
-			<v-overlay :value="overlay">
-				<v-item-group>
+			<v-overlay :value="overlay" opacity="0.8">
+				<v-item-group class="d-flex flex-column align-center">
 					<v-item
 						v-slot:default="{
 							active,
@@ -45,6 +45,7 @@
 						:key="locale.id"
 					>
 						<v-card
+							light
 							:color="
 								active
 									? 'primary'
@@ -56,11 +57,16 @@
 										locale.locale
 									)
 							"
-							class="my-4 px-4 py-2 text-center"
+							class="my-2 px-4 py-2 text-center"
 						>
 							{{ locale.lang }}
 						</v-card>
 					</v-item>
+					<v-btn icon @click="overlay =! overlay">
+						<v-icon @class="display-1">
+							mdi-window-close
+						</v-icon>
+					</v-btn>
 				</v-item-group>
 			</v-overlay>
 		</v-content>
