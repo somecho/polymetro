@@ -89,6 +89,7 @@ export default {
 		},
 		playSound(time, freq) {
 			this.osc = this.audioContext.createOscillator();
+
 			this.osc.type = "square";
 			this.osc.connect(this.audioContext.destination);
 			this.osc.frequency.value = freq;
