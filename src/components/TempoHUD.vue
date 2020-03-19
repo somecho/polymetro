@@ -1,33 +1,29 @@
 <template>
-	<v-card
-		outlined
-		class="cyan lighten-5 mt-4 py-2 d-flex justify-space-around align-center"
-	>
-		<v-btn
-			fab
-			class="elevation-1"
+	<v-container class="px-8 fluid ma-0 d-flex justify-space-between">
+		<div
+			class="primary--text tempo-button"
 			@click="singleInc(-1)"
 			@mousedown="incTempo(-10)"
 			@mouseup="stopInc"
 			@touchstart="incTempo(-10)"
 			@touchend="stopInc"
 		>
-			<v-icon>mdi-minus</v-icon>
-		</v-btn>
-		<v-card class="px-4 py-2 my-2 headline" outlined>
+			<div>-</div>
+		</div>
+		<v-card class="px-8 py-2  display-1"  outlined>
 			{{ $store.state.tempo }}
 		</v-card>
-		<v-btn
-			fab
-			class="elevation-1"
+		<div
+			class="tempo-button primary--text"
 			@click="singleInc(1)"
 			@mousedown="incTempo(10)"
 			@mouseup="stopInc"
 			@touchstart="incTempo(10)"
 			@touchend="stopInc"
-			><v-icon>mdi-plus</v-icon>
-		</v-btn>
-	</v-card>
+		>
+			<div>+</div>
+		</div>
+	</v-container>
 </template>
 <script>
 export default {
@@ -44,13 +40,13 @@ export default {
 					this.$store.state.tempo += inc;
 				}, 250);
 			}, 300);
-				console.log(this.timeoutId)
+			console.log(this.timeoutId);
 		},
 		stopInc() {
 			clearTimeout(this.timeoutId);
-				
+
 			clearInterval(this.intervalId);
-			console.log(this.timeoutId,123);
+			console.log(this.timeoutId, 123);
 		},
 		singleInc(inc) {
 			this.$store.state.tempo += inc;
@@ -58,4 +54,18 @@ export default {
 	}
 };
 </script>
-<style scoped></style>
+<style scoped>
+.tempo-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 3rem;
+	line-height: 1;
+}
+.tempo-button > * {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+</style>

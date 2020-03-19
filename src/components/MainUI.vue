@@ -1,13 +1,29 @@
 <template>
 	<v-container>
-		<beat-container
-			v-for="(beatContainer, index) in $store.state.metronome"
-			:key="beatContainer.id"
-			:index="index"
-		/>
-		<tempo-HUD />
-		<play-stop-button @click="toggleMetronome" />
-		<polyrhythm-selector />
+			<v-row >
+			<v-col cols="12" class="pa-0">
+				<v-row
+					:justify="justify"
+					style="min-height: 30vh;"
+				>
+					<beat-container
+						v-for="(beatContainer,
+						index) in $store.state
+							.metronome"
+						:key="beatContainer.id"
+						:index="index"
+					/>
+				</v-row>
+
+				<v-col class="fill-height elevation-4">
+					<tempo-HUD />
+					<play-stop-button
+						@click="toggleMetronome"
+					/>
+					<polyrhythm-selector />
+				</v-col>
+			</v-col>
+		</v-row>
 	</v-container>
 </template>
 <script>
@@ -69,7 +85,7 @@ export default {
 				clearTimeout(this.timeout2);
 			}
 		},
-	playSound(time, freq) {
+		playSound(time, freq) {
 			this.osc = this.audioContext.createOscillator();
 			this.osc.type = "square";
 			this.osc.connect(this.audioContext.destination);
