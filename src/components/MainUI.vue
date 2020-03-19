@@ -1,6 +1,6 @@
 <template>
 	<v-container>
-			<v-row >
+		<v-row>
 			<v-col cols="12" class="pa-0">
 				<v-row
 					:justify="justify"
@@ -15,7 +15,9 @@
 					/>
 				</v-row>
 
-				<v-col class="fill-height elevation-4">
+				<v-col
+					class="fill-height elevation-5"
+				>
 					<tempo-HUD />
 					<play-stop-button
 						@click="toggleMetronome"

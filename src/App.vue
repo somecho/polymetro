@@ -9,7 +9,7 @@
 
 			<!-- actual ui -->
 			<!-- TOOLBAR --> 
-			<v-toolbar dense>
+			<v-toolbar flat dense class="elevation-2">
 				<v-btn icon @click="overlay = !overlay">
 					<v-icon class="primary--text">
 							mdi-translate

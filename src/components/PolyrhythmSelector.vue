@@ -1,26 +1,34 @@
 <template>
-	<v-card outlined class="cyan lighten-5">
-		<v-container class="d-flex  justify-space-between ma-0 pa-0 pl-4 align-center">
-			<v-card
-				class="d-flex  flex-column align-center pa-2 pb-0"
-				outlined
+	<v-container class="d-flex justify-space-between">
+		<v-container
+			class="d-flex switch-box  flex-column align-center pa-2 pb-0"
+		>
+			<v-container class="text-center pa-0 ma-0 mb-2 overline"
+				>{{ $t("polymodeSwitch") }}
+			</v-container>
+			<v-switch
+				v-model="$store.state.polymode"
+				class="ma-0"
+			></v-switch>
+		</v-container>
+
+		<v-container
+			class="ma-0 pa-0 tap-box d-flex flex-column justify-center align-center"
+		>
+			<p class="overline">{{ $t("tapToChoose") }}</p>
+			<v-container
+				class=" ma-0 pa-0 d-flex justify-center align-center"
 			>
-				<v-container
-					
-					class="wide text-center pa-0 ma-0 mb-2 overline"
-					>{{ $t('polymodeSwitch') }} </v-container
+				<v-card
+					outlined
+					class=" mx-2"
+					:class="disabledWhilePlaying"
 				>
-				<v-switch
-					v-model="$store.state.polymode"
-					class="ma-0"
-				></v-switch>
-			</v-card>
-			<v-container >
-			<v-container class=" ma-0 pa-0 d-flex flex-column justify-center align-center">
-					<p class="overline ">{{ $t('tapToChoose') }}</p>
-			<v-container class=" ma-0 pa-0 d-flex justify-center align-center">
-				<v-card outlined class=" mx-2" :class="disabledWhilePlaying">
-					<v-menu  :disabled="$store.state.isPlaying">
+					<v-menu
+						:disabled="
+							$store.state.isPlaying
+						"
+					>
 						<template
 							v-slot:activator="{
 								on
@@ -104,10 +112,8 @@
 					</v-menu>
 				</v-card>
 			</v-container>
-			</v-container>
-			</v-container>
 		</v-container>
-	</v-card>
+	</v-container>
 </template>
 <script>
 export default {
@@ -168,7 +174,13 @@ export default {
 };
 </script>
 <style scoped>
-.wide {
-		min-width: 75px;
+.switch-box {
+	width: 30vw;
+}
+.tap-box {
+		width: 50vw;
+}
+.debug {
+	border: solid black 1px;
 }
 </style>

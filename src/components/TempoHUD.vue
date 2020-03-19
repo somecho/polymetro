@@ -10,8 +10,8 @@
 		>
 			<div>-</div>
 		</div>
-		<v-card class="px-8 py-2  display-1" outlined>
-			<v-card-text>{{ $store.state.tempo }}</v-card-text>
+		<v-card class="px-8 py-2 display-1" outlined>
+			{{ $store.state.tempo }}
 		</v-card>
 		<div
 			class="tempo-button primary--text"
