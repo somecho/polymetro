@@ -1,25 +1,11 @@
 <template>
-	<div @click="cycleAccent"  class="pa-0 ma-0">
+	<div @click="cycleAccent" class="pa-0 ma-0">
 		<v-icon
-			color=" accent-4"
-			v-if="accent == 2"
-			class=" display-1 cyan--text "
+			class="ma-0 primary--text  display-1"
 			:class="disabledClass"
-			>mdi-circle</v-icon
 		>
-		<v-icon
-			color="accent-3"
-			v-if="accent == 1"
-			class="ma-0 cyan--text  display-1"
-			:class="disabledClass"
-			>mdi-circle-half-full</v-icon
-		>
-		<v-icon
-			v-if="accent == 0"
-			class="cyan--text display-1"
-			:class="disabledClass"
-			>mdi-circle-outline</v-icon
-		>
+			{{ icon }}
+		</v-icon>
 	</div>
 </template>
 <script>
@@ -38,21 +24,32 @@ export default {
 		},
 		disabledClass: function() {
 			return {
-				"grey--text":
-					this.metronomeIndex == 1 &&
-					!this.$store.state.polymode,
-				"text--lighten-2":
+				"text--lighten-5":
 					this.metronomeIndex == 1 &&
 					!this.$store.state.polymode
 			};
+		},
+		icon: function() {
+			switch (this.accent) {
+				case 2:
+					return "mdi-circle";
+					break;
+				case 1:
+					return "mdi-circle-half-full";
+					break;
+				case 0:
+					return "mdi-circle-outline";
+					break;
+			}
 		}
 	},
 	methods: {
 		cycleAccent() {
 			var newAccent = (this.accent + 1) % 3;
 			if (
-				this.$store.state.polymode &&
-				this.metronomeIndex == 1 || this.metronomeIndex == 0
+				(this.$store.state.polymode &&
+					this.metronomeIndex == 1) ||
+				this.metronomeIndex == 0
 			) {
 				this.$set(
 					this.$store.state.metronome[
@@ -66,5 +63,4 @@ export default {
 	}
 };
 </script>
-<style scoped>
-</style>
+<style scoped></style>

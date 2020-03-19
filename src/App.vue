@@ -11,7 +11,7 @@
 			<!-- TOOLBAR --> 
 			<v-toolbar dense>
 				<v-btn icon @click="overlay = !overlay">
-					<v-icon class="teal--text">
+					<v-icon class="primary--text">
 							mdi-translate
 					</v-icon>
 				</v-btn>
@@ -22,7 +22,7 @@
 				<v-spacer />
 				<v-btn icon>
 					<router-link to="about">
-						<v-icon class="teal--text">
+						<v-icon class="primary--text">
 							mdi-information
 						</v-icon>
 					</router-link>
