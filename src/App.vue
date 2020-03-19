@@ -1,52 +1,38 @@
 <template>
 	<v-app>
-		<div class="mobile-notice">
-			<img src="@/assets/logo.svg" alt="" />
-			<div>{{ mobileNotice }}</div>
-		</div>
-		<span class="app">
-			<v-container
-				id="app"
-				class="d-flex align-center pa-1 cyan accent-4 app root-container justify-center"
-			>
-				<v-card class="main-ui ma-0 mb-6 elevation-4">
-					<router-view />
-				</v-card>
+		<v-content>
+			<!-- desktrop notice -->
+			<div class="mobile-notice">
+				<img src="@/assets/logo.svg" alt="" />
+				<div>{{ mobileNotice }}</div>
+			</div>
 
-				<v-bottom-navigation
-					fixed
-					class="px-0 cyan accent-4 elevation-0 d-flex justify-space-between"
-					height="35"
-				>
-					<router-link to="/"
-						><v-btn class="px-2"
-							>POLYMETRO</v-btn
-						></router-link
-					>
+			<!-- actual ui -->
+			<!-- TOOLBAR --> 
+			<v-toolbar dense>
+				<v-btn icon @click="overlay = !overlay">
+					<v-icon class="teal--text">
+							mdi-translate
+					</v-icon>
+				</v-btn>
+				<v-spacer />
+				<v-toolbar-title>
+					polymetro
+				</v-toolbar-title>
+				<v-spacer />
+				<v-btn icon>
+					<router-link to="about">
+						<v-icon class="teal--text">
+							mdi-information
+						</v-icon>
+					</router-link>
+				</v-btn>
+			</v-toolbar>
 
-					<span class="d-flex align-center">
-						<v-btn
-							class="mx-0 px-0"
-							@click="
-								overlay = !overlay
-							"
-						>
-							<span>{{
-								$i18n.locale
-							}}</span>
-						</v-btn>
-						<router-link to="about">
-							<v-btn
-								class="mx-0 px-0"
-							>
-								<v-icon>
-									mdi-information
-								</v-icon>
-							</v-btn>
-						</router-link>
-					</span>
-				</v-bottom-navigation>
-			</v-container>
+				<router-view />
+
+			<!-- language select overlay -->
+
 			<v-overlay :value="overlay">
 				<v-item-group>
 					<v-item
@@ -76,7 +62,7 @@
 					</v-item>
 				</v-item-group>
 			</v-overlay>
-		</span>
+		</v-content>
 	</v-app>
 </template>
 
@@ -106,7 +92,7 @@ export default {
 		delay(ms) {
 			const startPoint = new Date().getTime();
 			while (new Date().getTime() - startPoint <= ms) {
-					/* wait */
+				/* wait */
 			}
 		}
 	}
