@@ -95,7 +95,7 @@ export default {
 		mobileNotice:
 			"Polymetro is a webapp only available on mobile phones. Go to polymetro.xyz on your phone's browser to check it out!",
 		overlay: false,
-		drawer: true,
+		drawer: false,
 		locales: [
 			{ id: 0, locale: "EN", lang: "English" },
 			{ id: 1, locale: "DE", lang: "Deutsch" },
