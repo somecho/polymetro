@@ -29,7 +29,7 @@
 		<v-divider class="my-4"></v-divider>
 		<p class="caption">Polymetro 2.0.0</p>
 		<p class="caption">
-			© 2020 <a href="https://samuel-cho.net">Samuel Cho</a>
+			© 2020 <a href="https://www.notion.so/Showcase-8ef960883c934f67bf8c9ee90d716cdc">Samuel Cho</a>
 		</p>
 	</v-container>
 </template>
