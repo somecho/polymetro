@@ -20,6 +20,7 @@
 				>
 					<tempo-HUD />
 					<play-stop-button
+							id="activateContext"
 						@click="toggleMetronome"
 					/>
 					<polyrhythm-selector />
@@ -165,4 +166,5 @@ export default {
 	}
 };
 </script>
-<style scoped></style>
+<style scoped>
+</style>
