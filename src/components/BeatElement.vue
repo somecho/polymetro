@@ -40,7 +40,7 @@ export default {
 		disabledClass: function() {
 			return {
 					
-				"grey--text text--lighten-3":
+				"disabled--text text--lighten-3":
 					this.metronomeIndex == 1 &&
 					!this.$store.state.polymode,
 				"primary--text":

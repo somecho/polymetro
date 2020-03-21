@@ -12,7 +12,7 @@
 			<v-toolbar flat dense class="mb-3 elevation-2">
 				<v-btn icon @click="overlay = !overlay">
 					<v-icon class="primary--text">
-						mdi-translate
+						mdi-cog
 					</v-icon>
 				</v-btn>
 				<v-spacer />
@@ -36,15 +36,27 @@
 				absolute
 				right
 			>
-			<about-app @click="drawer =! drawer"></about-app>
+				<about-app
+					@click="drawer = !drawer"
+				></about-app>
 			</v-navigation-drawer>
 
 			<!-- language select overlay -->
 
-			<v-overlay :value="overlay" opacity="0.8">
+			<v-overlay :value="overlay"  opacity="0.85">
 				<v-item-group
 					class="d-flex flex-column align-center"
 				>
+					<v-item>
+					<h2>{{ $t('darkMode') }}</h2>
+				</v-item>
+				
+				<v-item>
+					<v-switch v-model="$vuetify.theme.dark"></v-switch>
+				</v-item>
+				<v-item>
+					<h2>{{ $t('languages') }}</h2>
+				</v-item>
 					<v-item
 						v-slot:default="{
 							active,
