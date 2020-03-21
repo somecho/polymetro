@@ -7,14 +7,14 @@
 			outlined
 			width="80"
 			height="80"
-			style="border: solid 1px #DADADA;"
+			style="border:solid 1px #DADADA;"
 			@click="
 				togglePlay();
 				handleClick();
 			"
 		>
 			<v-icon
-				class="display-3"
+				class="accent-text display-3"
 				v-if="!$store.state.isPlaying"
 			>
 				mdi-play</v-icon

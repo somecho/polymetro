@@ -5,6 +5,8 @@ Vue.use(VueI18n);
 
 const messages = {
 	EN: {
+			darkMode: 'Dark Mode',
+			languages: "Language",
 		polymodeSwitch: "Second metronome",
 		tapToChoose: "Tap to choose",
 		appDescription:
@@ -25,6 +27,8 @@ const messages = {
 			"Click on the share button (box with up arrow) and in the opening popup 'Add to Home Screen'."
 	},
 	DE: {
+			darkMode: 'Nacht Modus',
+			languages: "Sprache",
 		polymodeSwitch: "Zweites Metronom",
 		tapToChoose: "Tippen zum Wählen",
 		appDescription:
@@ -45,6 +49,8 @@ const messages = {
 			"Klicken Sie auf die Schaltfläche 'Teilen' (Feld mit dem Aufwärtspfeil) und im sich öffnenden Popup 'Zum Startbildschirm hinzufügen'."
 	},
 	CN: {
+			darkMode: "夜间模式",
+			languages: "语言",
 			polymodeSwitch: "第二节拍器",
 			tapToChoose: "点击选择",
 			appDescription: "Polymetro是一个多节奏型的节拍器。使用前，请打开声音。打开左下角的“第二节拍器”按钮来开始多节奏型练习吧！",
