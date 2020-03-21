@@ -20,7 +20,6 @@
 				>
 					<tempo-HUD />
 					<play-stop-button
-							id="activateContext"
 						@click="toggleMetronome"
 					/>
 					<polyrhythm-selector />
@@ -34,6 +33,7 @@ import BeatContainer from "@/components/BeatContainer.vue";
 import TempoHUD from "@/components/TempoHUD.vue";
 import PlayStopButton from "@/components/PlayStopButton.vue";
 import PolyrhythmSelector from "@/components/PolyrhythmSelector.vue";
+import unmuteAudio from "unmute-ios-audio"
 
 export default {
 	name: "main-ui",
@@ -70,6 +70,9 @@ export default {
 			return (60 / secondaryTempo) * 1000;
 		}
 	},
+		beforeCreate(){
+				unmuteAudio()
+		},
 	methods: {
 		toggleMetronome() {
 			if (this.$store.state.isPlaying) {
