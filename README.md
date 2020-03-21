@@ -15,4 +15,4 @@ Polymetro is a simple polyrhythmic metronome based on the traditional digital me
 - Three accent kinds: Strong, normal and empty 
 - Available in English, German and Chinese
 
-Creator: [Samuel Cho](https://www.twitter.com/_samuelcho)
+Creator: [Samuel Cho](https://samuel-cho.net/dev)
