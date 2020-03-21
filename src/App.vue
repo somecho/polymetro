@@ -43,20 +43,22 @@
 
 			<!-- language select overlay -->
 
-			<v-overlay :value="overlay"  opacity="0.85">
+			<v-overlay :value="overlay" opacity="0.85">
 				<v-item-group
 					class="d-flex flex-column align-center"
 				>
 					<v-item>
-					<h2>{{ $t('darkMode') }}</h2>
-				</v-item>
-				
-				<v-item>
-					<v-switch v-model="$vuetify.theme.dark"></v-switch>
-				</v-item>
-				<v-item>
-					<h2>{{ $t('languages') }}</h2>
-				</v-item>
+						<h2>{{ $t("darkMode") }}</h2>
+					</v-item>
+
+					<v-item>
+						<v-switch
+							v-model="$vuetify.theme.dark"
+						></v-switch>
+					</v-item>
+					<v-item>
+						<h2>{{ $t("languages") }}</h2>
+					</v-item>
 					<v-item
 						v-slot:default="{
 							active,
@@ -108,12 +110,21 @@ export default {
 			"Polymetro is a webapp only available on mobile phones. Go to polymetro.xyz on your phone's browser to check it out!",
 		overlay: false,
 		drawer: false,
+		darkSwitch: false,
 		locales: [
 			{ id: 0, locale: "EN", lang: "English" },
 			{ id: 1, locale: "DE", lang: "Deutsch" },
 			{ id: 2, locale: "CN", lang: "中文" }
 		]
 	}),
+	mounted() {
+		if (localStorage.locale) {
+			i18n.locale = localStorage.locale;
+		}
+			if (localStorage.dark){
+					this.$vuetify.theme.dark = JSON.parse(localStorage.dark)
+			}
+	},
 	computed: {
 		screenWidth() {
 			return window.innerWidth;
@@ -122,6 +133,7 @@ export default {
 	methods: {
 		changeLocale(locale) {
 			i18n.locale = locale;
+			localStorage.locale = locale;
 			this.overlay = false;
 		},
 		delay(ms) {
@@ -130,7 +142,12 @@ export default {
 				/* wait */
 			}
 		}
-	}
+	},
+		watch: {
+				'$vuetify.theme.dark': function(val){
+						localStorage.dark = val
+				}
+		}
 };
 </script>
 <style>
