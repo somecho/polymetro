@@ -16,3 +16,4 @@ Polymetro is a simple polyrhythmic metronome based on the traditional digital me
 - Available in English, German and Chinese
 
 Creator: [Samuel Cho](https://samuel-cho.net/dev)
+This is the development branch
