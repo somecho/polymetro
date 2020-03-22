@@ -27,7 +27,7 @@
 			{{ $t("firefox") }}
 		</p>
 		<v-divider class="my-4"></v-divider>
-		<p class="caption">Polymetro 2.1.2</p>
+		<p class="caption">Polymetro 2.1.3</p>
 		<p class="caption">
 			© 2020 <a href="https://www.notion.so/Showcase-8ef960883c934f67bf8c9ee90d716cdc">Samuel Cho</a>
 		</p>
