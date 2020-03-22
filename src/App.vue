@@ -43,7 +43,11 @@
 
 			<!-- language select overlay -->
 
-			<v-overlay :value="overlay" opacity="0.85">
+			<v-overlay
+				:value="overlay"
+				opacity="0.85"
+				@click.native="overlay = !overlay"
+			>
 				<v-item-group
 					class="d-flex flex-column align-center"
 				>
@@ -53,7 +57,10 @@
 
 					<v-item>
 						<v-switch
-							v-model="$vuetify.theme.dark"
+							v-model="
+								$vuetify.theme
+									.dark
+							"
 						></v-switch>
 					</v-item>
 					<v-item>
@@ -78,18 +85,13 @@
 								toggle,
 									changeLocale(
 										locale.locale
-									)
+									), overlay = !overlay
 							"
 							class="my-2 px-4 py-2 text-center"
 						>
 							{{ locale.lang }}
 						</v-card>
 					</v-item>
-					<v-btn icon @click="overlay = !overlay">
-						<v-icon @class="display - 1">
-							mdi-window-close
-						</v-icon>
-					</v-btn>
 				</v-item-group>
 			</v-overlay>
 		</v-content>
@@ -121,9 +123,11 @@ export default {
 		if (localStorage.locale) {
 			i18n.locale = localStorage.locale;
 		}
-			if (localStorage.dark){
-					this.$vuetify.theme.dark = JSON.parse(localStorage.dark)
-			}
+		if (localStorage.dark) {
+			this.$vuetify.theme.dark = JSON.parse(
+				localStorage.dark
+			);
+		}
 	},
 	computed: {
 		screenWidth() {
@@ -136,18 +140,12 @@ export default {
 			localStorage.locale = locale;
 			this.overlay = false;
 		},
-		delay(ms) {
-			const startPoint = new Date().getTime();
-			while (new Date().getTime() - startPoint <= ms) {
-				/* wait */
-			}
-		}
 	},
-		watch: {
-				'$vuetify.theme.dark': function(val){
-						localStorage.dark = val
-				}
+	watch: {
+		"$vuetify.theme.dark": function(val) {
+			localStorage.dark = val;
 		}
+	}
 };
 </script>
 <style>
