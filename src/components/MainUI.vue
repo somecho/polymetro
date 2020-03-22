@@ -117,7 +117,7 @@ export default {
 				} else if (accents[this.counter1] == 2) {
 					this.playSound(
 						this.nextNotetime,
-						1975.53
+							1318.51
 					);
 				}
 
@@ -141,14 +141,14 @@ export default {
 					if (accents[this.counter2] == 1) {
 						this.playSound(
 							this.nextNotetime2,
-							659.25
+								880.00
 						);
 					} else if (
 						accents[this.counter2] == 2
 					) {
 						this.playSound(
 							this.nextNotetime2,
-							1318.51
+								1174.66
 						);
 					}
 				}
