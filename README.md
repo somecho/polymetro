@@ -1,7 +1,7 @@
 ![](https://polymetro.xyz/img/logo.2c9148c1.svg)
 
 # POLYMETRO - Simple Polyrhythmic Metronome
-Homepage: https://polymetro.xyz
+Homepage: https://polymetro.netlify.app/
 
 
 ## About
@@ -14,6 +14,3 @@ Polymetro is a simple polyrhythmic metronome based on the traditional digital me
 - Supports polyrhythms with groups between 1 and 9 (eg. 1:2, 5:3, 9:8, etc.)
 - Three accent kinds: Strong, normal and empty 
 - Available in English, German and Chinese
-
-Creator: [Samuel Cho](https://samuel-cho.net/dev)
-This is the development branch
