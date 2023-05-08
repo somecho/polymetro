@@ -1,16 +1,43 @@
-![](https://polymetro.xyz/img/logo.2c9148c1.svg)
+# Polymetro - the PWA polyrhythmic metronome
 
-# POLYMETRO - Simple Polyrhythmic Metronome
-Homepage: https://polymetro.netlify.app/
+<div align="center">
+<img src="/assets/overview.png" width="720">
+<p><em>screenshots of mobile interface of polymetro in dark and light mode</em></p>
+</div>
 
+[Polymetro](https://polymetro.netlify.app) is a polyrhythmic metronome built as
+a PWA using Vue for the frontend and Web Audio as the sound engine. The app can
+only be accessed via mobile.
 
-## About
+## Background
 
-Polymetro is a simple polyrhythmic metronome based on the traditional digital metronome. Polymetro is made with Vue.js, Vuetify, Vuex and Web Audio. 
+I designed and developed Polymetro in March of 2020, when I was learning Magnus
+Lindberg's Twine. The piece is filled with polyrhythms, many of which I have
+never encountered before.
 
-### Features
-- Basic traditional metronome
-- Polyrhythm mode 
-- Supports polyrhythms with groups between 1 and 9 (eg. 1:2, 5:3, 9:8, etc.)
-- Three accent kinds: Strong, normal and empty 
-- Available in English, German and Chinese
+<div align="center">
+<img src="/assets/twine.png" width="720">
+<p><em>snippet of Twine</em></p>
+</div>
+
+In order to learn these rhythms, it was necessary to *flatten* the polyrhythm
+into one composite rhythm and subsequently learn it as a chunk. This wasn't
+always easy when faced with a dense rhythm, like 9 against 8. To easy this
+process for myself, I set out to create Polymetro.
+
+## Development
+
+The idea was to have a digital metronome that could play both single rhythms and
+polyrhythms. Setting the desired metrum, the pulse grid would adjust itself to
+visually show the number of beats per cycle.
+
+<div align="center">
+<img src="/assets/pulsegrid.png" width="720">
+<p><em>screenshot of pulsegrid</em></p>
+</div>
+
+Each glyph in the pulse grid could be toggled by tapping on it, cycling between
+three states: strong, weak and silent. 
+
+The metronome is also trilingual. Clicking on the settings, a modal will appear
+with the option to select between English, German and Chinese.
