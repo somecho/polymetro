@@ -1,7 +1,7 @@
 # Polymetro - the PWA polyrhythmic metronome
 
 <div align="center">
-<img src="/assets/overview.png" width="720">
+<img src="https://raw.githubusercontent.com/somecho/polymetro/master/assets/overview.png" width="720">
 <p><em>screenshots of mobile interface of polymetro in dark and light mode</em></p>
 </div>
 
@@ -16,7 +16,7 @@ Lindberg's Twine. The piece is filled with polyrhythms, many of which I have
 never encountered before.
 
 <div align="center">
-<img src="/assets/twine.png" width="720">
+<img src="https://raw.githubusercontent.com/somecho/polymetro/master/assets/twine.png" width="720">
 <p><em>snippet of Twine</em></p>
 </div>
 
@@ -32,7 +32,7 @@ polyrhythms. Setting the desired metrum, the pulse grid would adjust itself to
 visually show the number of beats per cycle.
 
 <div align="center">
-<img src="/assets/pulsegrid.png" width="720">
+<img src="https://raw.githubusercontent.com/somecho/polymetro/master/assets/pulsegrid.png" width="720">
 <p><em>screenshot of pulsegrid</em></p>
 </div>
 
